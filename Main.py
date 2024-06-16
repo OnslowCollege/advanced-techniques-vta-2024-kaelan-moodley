@@ -27,7 +27,14 @@ class Hero:
         self.health = health
         self.attack_power = attack_power
 
+    def attack(self)-> int:
+        """
+        Simulate a character's attack.
         
+        Returns:
+        The damage delt by the charcters attack.
+        """
+        return random.randint(self.attack_power // 2, self.attack_power)
 
 class Enemy(Hero):
     def _init_(self, name: str, health: int, attack_power: int, reward: int):
