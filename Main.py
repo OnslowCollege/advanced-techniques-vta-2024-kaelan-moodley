@@ -35,6 +35,17 @@ class Hero:
         The damage delt by the charcters attack.
         """
         return random.randint(self.attack_power // 2, self.attack_power)
+    
+    def is_alive(self) -> bool:
+        """
+        Checks if the charcter is still alive.
+        
+        Returns:
+        True if the charcter is alive, otherwise will return False.
+        """
+        return self.health > 0
+    
+class Player(Hero):
 
 class Enemy(Hero):
     def _init_(self, name: str, health: int, attack_power: int, reward: int):
