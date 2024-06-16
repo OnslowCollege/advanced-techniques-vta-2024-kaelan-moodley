@@ -45,7 +45,7 @@ class Hero:
         """
         return self.health > 0
     
-class Player(Hero):
+class Player(Hero): 
 
 class Enemy(Hero):
     def _init_(self, name: str, health: int, attack_power: int, reward: int):
