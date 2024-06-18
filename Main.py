@@ -57,6 +57,8 @@ class Player(Hero):
         self.dollars = 0
         self.inventory = {"health potion": 2, "damage potion": 0, "super sword": 0}
 
+    def defend   
+
 class Enemy(Hero):
     def _init_(self, name: str, health: int, attack_power: int, reward: int):
         """
