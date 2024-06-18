@@ -57,7 +57,12 @@ class Player(Hero):
         self.dollars = 0
         self.inventory = {"health potion": 2, "damage potion": 0, "super sword": 0}
 
-    def defend   
+    def defend(self):
+        """
+        Simulate a player's defend action, which increases their health.
+        """
+        self.health = min(100, self.health + 15)
+        print(f"{self.name} defends and regains 15 HP.")   
 
 class Enemy(Hero):
     def _init_(self, name: str, health: int, attack_power: int, reward: int):
