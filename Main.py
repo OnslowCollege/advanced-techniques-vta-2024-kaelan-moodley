@@ -48,8 +48,14 @@ class Hero:
 class Player(Hero): 
     def __init__(self, name: str):
         """'
-        
+        Initialize a player object.
+
+        Parameters:
+        - The name of the player.
         """
+        super().__init__(name, health=100, attack_power=20)
+        self.dollars = 0
+        self.inventory = {"health potion": 2, "damage potion": 0, "super sword": 0}
 
 class Enemy(Hero):
     def _init_(self, name: str, health: int, attack_power: int, reward: int):
