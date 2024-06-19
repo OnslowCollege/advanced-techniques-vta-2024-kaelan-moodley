@@ -107,7 +107,7 @@ class Player(Hero):
         print(f"{self.name} earned {amount} dollars. Total dollars: {self.dollars}")
 
 
-class Enemy(Hero):
+class Enemy(Hero): 
     def _init_(self, name: str, health: int, attack_power: int, reward: int):
         """
         Initialize an Enemy object.
