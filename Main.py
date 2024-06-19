@@ -72,7 +72,18 @@ class Player(Hero):
         - The type of potion to use.
         - The enemy to affect if using a damage potion.
         """
-           
+        if self.inventory.get(potion_type, 0) > 0:
+            self.inventory[potion_type] -= 1
+            if potion_type == "health potion":
+                self.health = min(100, self.health + 25)
+                print(f"{self.name} uses a basic potion and regains 25 HP.")
+            elif potion_type == "damage potion":
+                damage = 20
+                enemy.health -= damage
+                print(f"{self.name} uses a damage potion and deals {damage} damage to {enemy.name}!")
+        else:
+            print(f"{self.name} has no {potion_type} left!")   
+            
 
 class Enemy(Hero):
     def _init_(self, name: str, health: int, attack_power: int, reward: int):
