@@ -20,9 +20,9 @@ class Hero:
 
         Parameters
         ----------
-        - The name of the character.
-        - The health points of the character.
-        - The attack power of the character.
+        - name: The name of the character.
+        - health: The health points of the character.
+        - attack_power: The attack power of the character.
         
         """
         self.name = name
@@ -52,13 +52,15 @@ class Hero:
         return self.health > 0
     
 class Player(Hero): 
+    """E."""
+
     def __init__(self, name: str):
         """
         Initialize a player object.
 
         Parameters
         ----------
-        - The name of the player.
+        - name: The name of the player.
 
         """
         super().__init__(name, health=100, attack_power=20)
@@ -78,8 +80,8 @@ class Player(Hero):
 
         Parameters
         ----------
-        - The type of potion to use.
-        - The enemy to affect if using a damage potion.
+        - potion_type: The type of potion to use.
+        - enemy: The enemy to affect if using a damage potion.
 
         """
         if self.inventory.get(potion_type, 0) > 0:
@@ -100,7 +102,7 @@ class Player(Hero):
 
         Parameters
         ----------
-        -The amount of money to add.
+        - amount: The amount of money to add.
 
         """      
         self.dollars += amount
@@ -108,16 +110,18 @@ class Player(Hero):
 
 
 class Enemy(Hero): 
+    """E."""
+
     def _init_(self, name: str, health: int, attack_power: int, reward: int):
         """
         Initialize an Enemy object.
 
         Parameters
         ----------
-        -The name of the enemy.
-        -The health points of the enemy.
-        -The attack power of the enemy.
-        -The currency reward for defeating the enemy.
+        - name: The name of the enemy.
+        - health: The health points of the enemy.
+        - attack_power: The attack power of the enemy.
+        - reward: The currency reward for defeating the enemy.
 
         """
         super().__init__(name, health, attack_power)
