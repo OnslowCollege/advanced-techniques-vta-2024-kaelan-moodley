@@ -18,10 +18,12 @@ class Hero:
         """
         Initialize a Character object.
 
-        Parameters:
+        Parameters
+        ----------
         - The name of the character.
         - The health points of the character.
         - The attack power of the character.
+        
         """
         self.name = name
         self.health = health
@@ -31,36 +33,40 @@ class Hero:
         """
         Simulate a character's attack.
         
-        Returns:
+        Returns
+        -------
         The damage delt by the charcters attack.
+
         """
         return random.randint(self.attack_power // 2, self.attack_power)
     
     def is_alive(self) -> bool:
         """
-        Checks if the charcter is still alive.
+        Check if the charcter is still alive.
         
-        Returns:
+        Returns
+        -------
         True if the charcter is alive, otherwise will return False.
+
         """
         return self.health > 0
     
 class Player(Hero): 
     def __init__(self, name: str):
-        """'
+        """
         Initialize a player object.
 
-        Parameters:
+        Parameters
+        ----------
         - The name of the player.
+
         """
         super().__init__(name, health=100, attack_power=20)
         self.dollars = 0
         self.inventory = {"health potion": 2, "damage potion": 0, "super sword": 0}
 
     def defend(self):
-        """
-        Simulate a player's defend action, which increases their health.
-        """
+        """Simulate a player's defend action, which increases their health."""
         self.health = min(100, self.health + 15)
         print(f"{self.name} defends and regains 15 HP.")
 
@@ -68,9 +74,11 @@ class Player(Hero):
         """
         Use a potion from the player's inventory.
 
-        Parameters:
+        Parameters
+        ----------
         - The type of potion to use.
         - The enemy to affect if using a damage potion.
+
         """
         if self.inventory.get(potion_type, 0) > 0:
             self.inventory[potion_type] -= 1
@@ -88,19 +96,22 @@ class Player(Hero):
         """
         Add money to the player's total.
 
-        Parameters:
+        Parameters
+        ----------
         -The amount of money to add.
+
         """      
         self.dollars += amount
         print(f"{self.name} earned {amount} dollars. Total dollars: {self.dollars}")
+
 
 class Enemy(Hero):
     def _init_(self, name: str, health: int, attack_power: int, reward: int):
         """
         Initialize an Enemy object.
 
-        Parameters: 
-
+        Parameters
+        ----------
         -The name of the enemy.
         -The health points of the enemy.
         -The attack power of the enemy.
@@ -110,5 +121,5 @@ class Enemy(Hero):
         super().__init__(name, health, attack_power)
         self.reward = reward
         
-    def main():
-        """ The main function to run the game. """
+
+  
