@@ -64,7 +64,15 @@ class Player(Hero):
         self.health = min(100, self.health + 15)
         print(f"{self.name} defends and regains 15 HP.")
 
-       
+    def use_potion(self, potion_type: str, enemy: 'Enemy'):
+        """
+        Use a potion from the player's inventory.
+
+        Parameters:
+        - The type of potion to use.
+        - The enemy to affect if using a damage potion.
+        """
+           
 
 class Enemy(Hero):
     def _init_(self, name: str, health: int, attack_power: int, reward: int):
