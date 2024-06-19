@@ -83,7 +83,16 @@ class Player(Hero):
                 print(f"{self.name} uses a damage potion and deals {damage} damage to {enemy.name}!")
         else:
             print(f"{self.name} has no {potion_type} left!")   
-            
+
+    def add_dollars(self, amount: int):
+        """
+        Add money to the player's total.
+
+        Parameters:
+        -The amount of money to add.
+        """      
+        self.dollars += amount
+        print(f"{self.name} earned {amount} dollars. Total dollars: {self.dollars}")
 
 class Enemy(Hero):
     def _init_(self, name: str, health: int, attack_power: int, reward: int):
