@@ -63,7 +63,9 @@ class Player(Hero):
         """
         super().__init__(name, health=100, attack_power=20)
         self.dollars = 0
-        self.inventory = {"health potion": 2, "damage potion": 0, "super sword": 0}
+        self.inventory = {
+            "health potion": 2, "damage potion": 0, "super sword": 0
+            }
 
     def defend(self):
         """Simulate a player's defend action, which increases their health."""
