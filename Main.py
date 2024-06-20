@@ -110,6 +110,17 @@ class Player(Hero):
         self.dollars += amount
         print(f"{self.name} earned {amount} dollars. Total dollars: {self.dollars}")
 
+    def show_stats(self):
+        """Display the player's stats."""
+        
+        print(f"\n{self.name}'s Stats:")
+        print(f"Health: {self.health}")
+        print(f"Attack Power: {self.attack_power}")
+        print(f"Dollars: {self.dollars}")
+        print(f"Inventory: {self.inventory}")
+        print(f"Battles Won: {self.stats['battles_won']}")
+        print(f"Battles Lost: {self.stats['battles_lost']}")
+
 
 class Enemy(Hero): 
     """E."""
