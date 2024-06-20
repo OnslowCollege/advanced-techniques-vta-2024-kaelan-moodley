@@ -14,6 +14,8 @@ import random
 from typing import List, Tuple
 
 class Hero:
+    """E."""
+
     def __init__(self, name: str, health: int, attack_power: int):
         """
         Initialize a Character object.
