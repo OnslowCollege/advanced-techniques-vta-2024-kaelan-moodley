@@ -209,6 +209,33 @@ def player_turn(player: Player, enemy: Enemy) -> bool:
             return True
     return False
 
+def enemy_turn(player: Player, enemy: Enemy) -> bool:
+    """
+    Handle the enemy's turn.
+
+    Parameters
+    ----------
+    - player (Player): The player object.
+    - enemy (Enemy): The enemy object.
+
+    Returns
+    -------
+    - bool: True if the player is defeated, False otherwise.
+
+    """
+    enemy_damage = enemy.attack()
+    player.health -= enemy_damage
+    print(f"{enemy.name} attacks {player.name} and deals" +
+        f" {enemy_damage} damage!")
+    if player.health <= 0:
+        print(f"{player.name} was defeated by {enemy.name}. Game over!")
+        player.stats['battles_lost'] += 1
+        return True
+    return False
+
+
+
+
 
 def shop(player: Player):
     """
