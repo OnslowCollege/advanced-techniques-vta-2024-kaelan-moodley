@@ -233,7 +233,27 @@ def enemy_turn(player: Player, enemy: Enemy) -> bool:
         return True
     return False
 
+def battle(player: Player, enemy: Enemy) -> bool:
+    """
+    Simulate a battle between a player and an enemy.
 
+    Parameters
+    ----------
+    - player (Player): The player object.
+    - enemy (Enemy): The enemy object.
+
+    Returns
+    -------
+    - bool: True if the player wins, False otherwise.
+    
+    """
+    print(f"A wild {enemy.name} appears!")
+    while player.is_alive() and enemy.is_alive():
+        if player_turn(player, enemy):
+            return True
+        if enemy_turn(player, enemy):
+            return False
+    return player.is_alive()
 
 
 
