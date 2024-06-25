@@ -141,4 +141,30 @@ class Enemy(Hero):
         self.reward = reward
         
 
-  
+def shop(player: Player):
+    """
+    Display the shop menu and allow the player to buy items.
+
+    Parameters:
+    ----------
+    
+    - player (Player): The player object.
+    """
+    print("Welcome to the shop! Here are the items you can buy:")
+    items = {
+        "health potion": 20,
+        "damage potion": 30,
+        "sword": 50,
+        "super sword": 100
+    }
+
+    for item, cost in items.items():
+        print(f"{item.capitalize()}: {cost} dollars")
+
+    choice = input("Enter the name of the item you want to buy or type 'exit' to leave: ").strip().lower()
+    if choice in items:
+        player.buy_item(choice, items[choice])
+    elif choice == "exit":
+        return
+    else:
+        print("Invalid choice. Please try again.")
