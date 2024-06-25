@@ -140,7 +140,7 @@ class Enemy(Hero):
         super().__init__(name, health, attack_power)
         self.reward = reward
 
-    def get_player_choice() -> str:
+def get_player_choice() -> str:
     """
     Get the player's choice of action.
 
