@@ -158,7 +158,53 @@ def get_player_choice() -> str:
             return player_choice
         print("Invalid choice! Please enter 1, 2, 3, or 4.")
 
-        
+def player_turn(player: Player, enemy: Enemy) -> bool:
+    """
+    Handle the player's turn.
+
+    Parameters
+    ----------
+    - player (Player): The player object.
+    - enemy (Enemy): The enemy object.
+
+    Returns
+    -------
+
+    - bool: True if the enemy is defeated, False otherwise.
+    """
+
+    print(
+        f"{player.name}'s HP: {player.health} | {enemy.name}'s HP: {enemy.health}"
+    )
+    player_choice = get_player_choice()
+    if player_choice == "1":
+        player_damage = player.attack()
+        enemy.health -= player_damage
+        print(
+            f"{player.name} attacks {enemy.name} and deals {player_damage} damage!"
+        )
+        if enemy.health <= 0:
+            print(
+                f"{player.name} defeated {enemy.name} and earned {enemy.reward} dollars!"
+            )
+            player.add_dollars(enemy.reward)
+            player.stats["battles_won"] += 1
+            return True
+    elif player_choice == "2":
+        player.defend()
+    elif player_choice == "3":
+        player.use_potion("health potion", enemy)
+    elif player_choice == "4":
+        player.use_potion("damage potion", enemy)
+        if enemy.health <= 0:
+            print(
+                f"{player.name} defeated {enemy.name} and earned {enemy.reward} dollars!"
+            )
+            player.add_dollars(enemy.reward)
+            player.stats["battles_won"] += 1
+            return True
+    return False
+
 
 def shop(player: Player):
     """
