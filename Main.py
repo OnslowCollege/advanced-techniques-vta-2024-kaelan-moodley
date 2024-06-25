@@ -139,6 +139,19 @@ class Enemy(Hero):
         """
         super().__init__(name, health, attack_power)
         self.reward = reward
+
+    def get_player_choice() -> str:
+    """
+    Get the player's choice of action.
+
+    Returns:
+    - str: The player's chosen action.
+    """
+    while True:
+        player_choice = input("Choose your action (1. Attack, 2. Defend, 3. Use Health Potion, 4. Use Damage Potion): ").strip()
+        if player_choice in ["1", "2", "3", "4"]:
+            return player_choice
+        print("Invalid choice! Please enter 1, 2, 3, or 4.")   
         
 
 def shop(player: Player):
