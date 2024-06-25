@@ -169,23 +169,26 @@ def player_turn(player: Player, enemy: Enemy) -> bool:
 
     Returns
     -------
-
     - bool: True if the enemy is defeated, False otherwise.
+
     """
 
     print(
-        f"{player.name}'s HP: {player.health} | {enemy.name}'s HP: {enemy.health}"
+        f"{player.name}'s HP: {player.health} |" + 
+        f" {enemy.name}'s HP: {enemy.health}"
     )
     player_choice = get_player_choice()
     if player_choice == "1":
         player_damage = player.attack()
         enemy.health -= player_damage
         print(
-            f"{player.name} attacks {enemy.name} and deals {player_damage} damage!"
+            f"{player.name} attacks {enemy.name} and" +
+            " deals {player_damage} damage!"
         )
         if enemy.health <= 0:
             print(
-                f"{player.name} defeated {enemy.name} and earned {enemy.reward} dollars!"
+                f"{player.name} defeated {enemy.name} " +
+                f"and earned {enemy.reward} dollars!"
             )
             player.add_dollars(enemy.reward)
             player.stats["battles_won"] += 1
@@ -198,7 +201,8 @@ def player_turn(player: Player, enemy: Enemy) -> bool:
         player.use_potion("damage potion", enemy)
         if enemy.health <= 0:
             print(
-                f"{player.name} defeated {enemy.name} and earned {enemy.reward} dollars!"
+                f"{player.name} defeated {enemy.name} " +
+                f"and earned {enemy.reward} dollars!"
             )
             player.add_dollars(enemy.reward)
             player.stats["battles_won"] += 1
