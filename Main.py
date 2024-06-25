@@ -145,10 +145,10 @@ def shop(player: Player):
     """
     Display the shop menu and allow the player to buy items.
 
-    Parameters:
+    Parameters
     ----------
-    
     - player (Player): The player object.
+
     """
     print("Welcome to the shop! Here are the items you can buy:")
     items = {
