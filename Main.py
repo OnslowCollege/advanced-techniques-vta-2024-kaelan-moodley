@@ -94,7 +94,8 @@ class Player(Hero):
             elif potion_type == "damage potion":
                 damage = 20
                 enemy.health -= damage
-                print(f"{self.name} uses a damage potion and deals {damage} damage to {enemy.name}!")
+                print(f"{self.name} uses a damage potion and deals {damage} " +
+                    f"damage to {enemy.name}!")
         else:
             print(f"{self.name} has no {potion_type} left!")   
 
@@ -108,7 +109,8 @@ class Player(Hero):
 
         """      
         self.dollars += amount
-        print(f"{self.name} earned {amount} dollars. Total dollars: {self.dollars}")
+        print(f"{self.name} earned {amount} dollars." +
+            f" Total dollars: {self.dollars}")
 
     def show_stats(self):
         """Display the player's stats."""
@@ -178,7 +180,8 @@ def shop(player: Player):
     for item, cost in items.items():
         print(f"{item.capitalize()}: {cost} dollars")
 
-    choice = input("Enter the name of the item you want to buy or type 'exit' to leave: ").strip().lower()
+    choice = input("Enter the name of the item you want to buy or type"+
+                " 'exit' to leave: ").strip().lower()
     if choice in items:
         player.buy_item(choice, items[choice])
     elif choice == "exit":
