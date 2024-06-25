@@ -150,7 +150,8 @@ def get_player_choice() -> str:
 
     """
     while True:
-        player_choice = input("Choose your action (1. Attack, 2. Defend, 3. Use Health Potion, 4. Use Damage Potion): ").strip()
+        player_choice = input("Choose your action (1. Attack, 2. Defend, 3." +
+                        "Use Health Potion, 4. Use Damage Potion): ").strip()
         if player_choice in ["1", "2", "3", "4"]:
             return player_choice
         print("Invalid choice! Please enter 1, 2, 3, or 4.")
