@@ -256,7 +256,7 @@ def battle(player: Player, enemy: Enemy) -> bool:
     return player.is_alive()
 
 
-def shop_detailed(player: ):
+def shop_detailed(player ):
     """
     Display the shop menu as a numbered list with detailed descriptions and 
     allow the player to buy items.
@@ -285,3 +285,4 @@ def shop_detailed(player: ):
         else:
             print("Invalid choice. Please try again.")
 
+print(shop_detailed(Player))
