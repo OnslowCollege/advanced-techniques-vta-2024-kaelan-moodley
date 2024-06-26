@@ -287,4 +287,4 @@ def shop(player: Player):
         print("Invalid choice. Please try again.")
 
 
-print(shop)
+print(shop(Player))
