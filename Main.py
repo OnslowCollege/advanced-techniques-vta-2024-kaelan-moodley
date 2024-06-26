@@ -258,11 +258,14 @@ def battle(player: Player, enemy: Enemy) -> bool:
 
 
 def shop_categorized(player):
-    """
-    Display the shop menu with categorized items and allow the player to buy items.
 
-    Parameters:
+    """
+    Display the shop menu with categorized items. Allows player to purchase.
+
+    Parameters
+    ----------
     - player (Player): The player object.
+
     """
     print("Welcome to the shop! Here are the items you can buy:")
     items = {
