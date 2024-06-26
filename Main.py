@@ -257,7 +257,7 @@ def battle(player: Player, enemy: Enemy) -> bool:
 
 
 
-def shop(player: Player):
+def shop(player):
     """
     Display the shop menu and allow the player to buy items.
 
@@ -286,3 +286,5 @@ def shop(player: Player):
     else:
         print("Invalid choice. Please try again.")
 
+
+print(shop(Player))
