@@ -1,5 +1,5 @@
 """
-Main.
+Shop function no.1.
 
 Created by: Kaelan Moodley
 Date: 28/05/2024
@@ -285,3 +285,6 @@ def shop(player: Player):
         return
     else:
         print("Invalid choice. Please try again.")
+
+
+print(shop)
