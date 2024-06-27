@@ -257,7 +257,7 @@ def battle(player: Player, enemy: Enemy) -> bool:
 
 
 
-def shop_categorized(player):
+def shop_categorized(player: Player):
 
     """
     Display the shop menu with categorized items. Allows player to purchase.
@@ -270,19 +270,28 @@ def shop_categorized(player):
     print("Welcome to the shop! Here are the items you can buy:")
     items = {
         "Potions": [
-            {"name": "health potion", "cost": 20, "description": "Regains 25 HP"},
-            {"name": "damage potion", "cost": 30, "description": "Deals 20 damage to the enemy"}
+            {"name": "health potion", 
+            "cost": 20, "description":
+            "Regains 25 HP"},
+            {"name": "damage potion", 
+            "cost": 30,
+            "description": "Deals 20 damage to the enemy"}
         ],
         "Weapons": [
-            {"name": "sword", "cost": 50, "description": "Increases attack power by 5"},
-            {"name": "super sword", "cost": 100, "description": "Increases attack power by 10"}
+            {"name": "sword",
+            "cost": 50, 
+            "description": "Increases attack power by 5"},
+            {"name": "super sword",
+            "cost": 100,
+            "description": "Increases attack power by 10"}
         ]
     }
 
     for category, category_items in items.items():
         print(f"\n{category}:")
         for idx, item in enumerate(category_items, start=1):
-            print(f"  {idx}. {item['name'].capitalize()}: {item['cost']} dollars - {item['description']}")
+            print(f"  {idx}. {item['name'].capitalize()}: "+ 
+                f" {item['cost']} dollars - {item['description']}")
 
     while True:
         category_choice = input("\nEnter the category (Potions/Weapons) you want to buy from or type 'exit' to leave: ").strip().capitalize()
