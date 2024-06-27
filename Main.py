@@ -312,3 +312,4 @@ def shop_categorized(player: Player):
             break
         else:
             print("Invalid category. Please try again.")
+            
