@@ -297,10 +297,11 @@ def shop_categorized(player: Player):
         category_choice = input("\nEnter the category (Potions/Weapons)"+
         " you want to buy from or type 'exit' to leave: ").strip().capitalize()
         if category_choice in items:
-            item_choice = input(f"Enter the number of the item you want to"+
+            item_choice = input("Enter the number of the item you want to"+
                     f" buy from {category_choice} or type 'back' to "+
-                    f" choose another category: ").strip()
-            if item_choice.isdigit() and 1 <= int(item_choice) <= len(items[category_choice]):
+                    " choose another category: ").strip()
+            if item_choice.isdigit() and 1 <= int(item_choice) \
+                <= len(items[category_choice]):
                 selected_item = items[category_choice][int(item_choice) - 1]
                 player.buy_item(selected_item['name'], selected_item['cost'])
             elif item_choice.lower() == "back":
