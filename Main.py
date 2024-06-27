@@ -257,9 +257,10 @@ def battle(player: Player, enemy: Enemy) -> bool:
 
 
 
-def shop(player: Player):
+def shop_categorized(player: Player):
+
     """
-    Display the shop menu and allow the player to buy items.
+    Display the shop menu with categorized items. Allows player to purchase.
 
     Parameters
     ----------
@@ -268,20 +269,46 @@ def shop(player: Player):
     """
     print("Welcome to the shop! Here are the items you can buy:")
     items = {
-        "health potion": 20,
-        "damage potion": 30,
-        "sword": 50,
-        "super sword": 100
+        "Potions": [
+            {"name": "health potion", 
+            "cost": 20, "description":
+            "Regains 25 HP"},
+            {"name": "damage potion", 
+            "cost": 30,
+            "description": "Deals 20 damage to the enemy"}
+        ],
+        "Weapons": [
+            {"name": "sword",
+            "cost": 50, 
+            "description": "Increases attack power by 5"},
+            {"name": "super sword",
+            "cost": 100,
+            "description": "Increases attack power by 10"}
+        ]
     }
 
-    for item, cost in items.items():
-        print(f"{item.capitalize()}: {cost} dollars")
+    for category, category_items in items.items():
+        print(f"\n{category}:")
+        for idx, item in enumerate(category_items, start=1):
+            print(f"  {idx}. {item['name'].capitalize()}: "+ 
+                f" {item['cost']} dollars - {item['description']}")
 
-    choice = input("Enter the name of the item you want to buy or type"+
-                " 'exit' to leave: ").strip().lower()
-    if choice in items:
-        player.buy_item(choice, items[choice])
-    elif choice == "exit":
-        return
-    else:
-        print("Invalid choice. Please try again.")
+    while True:
+        category_choice = input("\nEnter the category (Potions/Weapons)"+
+        " you want to buy from or type 'exit' to leave: ").strip().capitalize()
+        if category_choice in items:
+            item_choice = input("Enter the number of the item you want to"+
+                    f" buy from {category_choice} or type 'back' to "+
+                    " choose another category: ").strip()
+            if item_choice.isdigit() and 1 <= int(item_choice) \
+                <= len(items[category_choice]):
+                selected_item = items[category_choice][int(item_choice) - 1]
+                player.buy_item(selected_item["name"], selected_item["cost"])
+            elif item_choice.lower() == "back":
+                continue
+            else:
+                print("Invalid choice. Please try again.")
+        elif category_choice == "Exit":
+            break
+        else:
+            print("Invalid category. Please try again.")
