@@ -22,9 +22,12 @@ class Hero:
 
         Parameters
         ----------
-        - name: The name of the character.
-        - health: The health points of the character.
-        - attack_power: The attack power of the character.
+        name: str:
+            The name of the character.
+        health: int: 
+            The health points of the character.
+        attack_power: int: 
+            The attack power of the character.
         
         """
         self.name = name
@@ -62,7 +65,8 @@ class Player(Hero):
 
         Parameters
         ----------
-        - name: The name of the player.
+        name: str:
+            The name of the player.
 
         """
         super().__init__(name, health=100, attack_power=20)
@@ -76,14 +80,16 @@ class Player(Hero):
         self.health = min(100, self.health + 15)
         print(f"{self.name} defends and regains 15 HP.")
 
-    def use_potion(self, potion_type: str, enemy: 'Enemy'):
+    def use_potion(self, potion_type: str, enemy: "Enemy"):
         """
         Use a potion from the player's inventory.
 
         Parameters
         ----------
-        - potion_type: The type of potion to use.
-        - enemy: The enemy to affect if using a damage potion.
+        potion_type: str:
+            The type of potion to use.
+        enemy: Enemy:
+            The enemy to affect if using a damage potion.
 
         """
         if self.inventory.get(potion_type, 0) > 0:
@@ -105,7 +111,8 @@ class Player(Hero):
 
         Parameters
         ----------
-        - amount: The amount of money to add.
+        amount: int:
+            The amount of money to add.
 
         """      
         self.dollars += amount
@@ -133,10 +140,14 @@ class Enemy(Hero):
 
         Parameters
         ----------
-        - name: The name of the enemy.
-        - health: The health points of the enemy.
-        - attack_power: The attack power of the enemy.
-        - reward: The currency reward for defeating the enemy.
+        name: str:
+            The name of the enemy.
+        health: int:
+            The health points of the enemy.
+        attack_power: int:
+            The attack power of the enemy.
+        reward: int:
+            The currency reward for defeating the enemy.
 
         """
         super().__init__(name, health, attack_power)
@@ -164,8 +175,10 @@ def player_turn(player: Player, enemy: Enemy) -> bool:
 
     Parameters
     ----------
-    - player (Player): The player object.
-    - enemy (Enemy): The enemy object.
+    player: Player: 
+        The player object.
+    enemy: Enemy:
+        The enemy object.
 
     Returns
     -------
@@ -215,8 +228,10 @@ def enemy_turn(player: Player, enemy: Enemy) -> bool:
 
     Parameters
     ----------
-    - player (Player): The player object.
-    - enemy (Enemy): The enemy object.
+    player: Player: 
+        The player object.
+    enemy: Enemy:
+        The enemy object.
 
     Returns
     -------
