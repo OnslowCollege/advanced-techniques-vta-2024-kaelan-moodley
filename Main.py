@@ -330,4 +330,10 @@ def shop_categorized(player: Player):
             break
         else:
             print("Invalid category. Please try again.")
+
+def main():
+    """The main function to run the game."""
+    
+    player_name = input("Enter your name: ").strip()
+    player = Player(player_name)          
             
