@@ -360,22 +360,31 @@ def main():
     choice = input("Choose an option: ").strip() 
 
     if choice == "1":
-        pass
+            for i, enemy in enumerate(enemies, start=1):
+                print(f"{i}. {enemy.name} (HP: {enemy.health}, Attack: {enemy.attack_power}, Reward: {enemy.reward} dollars)")
 
-    elif choice == "2":
-            shop_categorized(player)
+            enemy_choice = int(input("Choose an enemy to fight: ").strip()) - 1
+            if 0 <= enemy_choice < len(enemies):
+                if not battle(player, enemies[enemy_choice]):
+                    print("Game over!")
+                    break
+                enemies.pop(enemy_choice)
+            else:
+                print("Invalid choice. Please choose a valid enemy.")
 
-    elif choice == "3":
+        elif choice == "2":
+            shop(player)
+
+        elif choice == "3":
             player.show_stats()
 
-    elif choice == "4":
+        elif choice == "4":
             print("Thank you for playing! Goodbye.")
+            break
 
-
-    else:
+        else:
             print("Invalid choice. Please select a valid option.")
 
 
 if __name__ == "__main__":
     main()
-            
