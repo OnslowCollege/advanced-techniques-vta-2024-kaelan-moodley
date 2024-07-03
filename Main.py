@@ -370,7 +370,7 @@ def main():
 
     elif choice == "4":
             print("Thank you for playing! Goodbye.")
-            break
+
 
     else:
             print("Invalid choice. Please select a valid option.")
