@@ -342,7 +342,7 @@ def main():
         ("Pollution", 70, 14, 25),
         ("Climate Change", 90, 11, 30),
         ("Overfishing", 75, 13, 20),
-        ("Plastic Pollution", 85, 14, 25) 
+        ("Plastic Pollution", 85, 14, 25)
     ]
 
     enemies: List[Enemy] = [Enemy(name, health, attack_power, reward) for name, health, attack_power, reward in enemies_data]  
