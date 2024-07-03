@@ -357,34 +357,34 @@ def main():
         print("3. View stats")
         print("4. Exit game") 
 
-    choice = input("Choose an option: ").strip() 
+        choice = input("Choose an option: ").strip() 
 
-    if choice == "1":
-            for i, enemy in enumerate(enemies, start=1):
-                print(f"{i}. {enemy.name} (HP: {enemy.health}, " + 
-            f"Attack: {enemy.attack_power}, Reward: {enemy.reward} dollars)")
+        if choice == "1":
+                for i, enemy in enumerate(enemies, start=1):
+                    print(f"{i}. {enemy.name} (HP: {enemy.health}, " + 
+                f"Attack: {enemy.attack_power}, Reward: {enemy.reward} dollars)")
 
-            enemy_choice = int(input("Choose an enemy to fight: ").strip()) - 1
-            if 0 <= enemy_choice < len(enemies):
-                if not battle(player, enemies[enemy_choice]):
-                    print("Game over!")
-                    break
-                enemies.pop(enemy_choice)
-            else:
-                print("Invalid choice. Please choose a valid enemy.")
+                enemy_choice = int(input("Choose an enemy to fight: ").strip()) - 1
+                if 0 <= enemy_choice < len(enemies):
+                    if not battle(player, enemies[enemy_choice]):
+                        print("Game over!")
+                        break
+                    enemies.pop(enemy_choice)
+                else:
+                    print("Invalid choice. Please choose a valid enemy.")
 
-    elif choice == "2":
-            shop_categorized(player)
+        elif choice == "2":
+                shop_categorized(player)
 
-    elif choice == "3":
-            player.show_stats()
+        elif choice == "3":
+                player.show_stats()
 
-    elif choice == "4":
-            print("Thank you for playing! Goodbye.")
-            break
+        elif choice == "4":
+                print("Thank you for playing! Goodbye.")
+                break
 
-    else:
-        print("Invalid choice. Please select a valid option.")
+        else:
+            print("Invalid choice. Please select a valid option.")
 
 
 if __name__ == "__main__":
