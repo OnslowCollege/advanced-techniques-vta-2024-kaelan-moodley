@@ -239,8 +239,10 @@ def battle(player: Player, enemy: Enemy) -> bool:
 
     Parameters
     ----------
-    - player (Player): The player object.
-    - enemy (Enemy): The enemy object.
+    player: Player: 
+        The player object.
+    enemy: Enemy:
+        The enemy object.
 
     Returns
     -------
@@ -264,7 +266,8 @@ def shop_categorized(player: Player):
 
     Parameters
     ----------
-    - player (Player): The player object.
+    player: Player
+        The player object.
 
     """
     print("Welcome to the shop! Here are the items you can buy:")
