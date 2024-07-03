@@ -332,8 +332,50 @@ def shop_categorized(player: Player):
             print("Invalid category. Please try again.")
 
 def main():
-    """The main function to run the game."""
-    
+    """Run the game."""
+
     player_name = input("Enter your name: ").strip()
-    player = Player(player_name)          
+    player = Player(player_name)     
+
+    enemies_data: List[Tuple[str, int, int, int]] = [
+        ("Deforestation", 80, 12, 20),
+        ("Pollution", 70, 14, 25),
+        ("Climate Change", 90, 11, 30),
+        ("Overfishing", 75, 13, 20),
+        ("Plastic Pollution", 85, 14, 25) 
+    ]
+
+    enemies: List[Enemy] = [Enemy(name, health, attack_power, reward) for name, health, attack_power, reward in enemies_data]  
+
+    print("Welcome, eco-warrior! Your mission is to protect the environment.")
+    print("You will face various adversaries harming the planet. Let's begin!")
+
+    while player.is_alive():
+        print("\nMenu:")
+        print("1. Fight an enemy")
+        print("2. Visit the shop")
+        print("3. View stats")
+        print("4. Exit game") 
+
+    choice = input("Choose an option: ").strip() 
+
+    if choice == "1":
+        pass
+
+    elif choice == "2":
+            shop_categorized(player)
+
+    elif choice == "3":
+            player.show_stats()
+
+    elif choice == "4":
+            print("Thank you for playing! Goodbye.")
+            break
+
+    else:
+            print("Invalid choice. Please select a valid option.")
+
+
+if __name__ == "__main__":
+    main()
             
