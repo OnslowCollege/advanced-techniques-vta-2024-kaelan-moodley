@@ -366,9 +366,11 @@ def main():
         if choice == "1":
                 for i, enemy in enumerate(enemies, start=1):
                     print(f"{i}. {enemy.name} (HP: {enemy.health}, " + 
-                f"Attack: {enemy.attack_power}, Reward: {enemy.reward} dollars)")
+                f"Attack: {enemy.attack_power}, " + 
+                f"Reward: {enemy.reward} dollars)")
 
-                enemy_choice =int(input("Choose an enemy to fight: ").strip()) - 1
+                enemy_choice =int(input("Choose an enemy to fight: ").strip())\
+                - 1
                 if 0 <= enemy_choice < len(enemies):
                     if not battle(player, enemies[enemy_choice]):
                         print("Game over!")
