@@ -11,7 +11,6 @@ Enviromental Conservation Game.
 # Enter your code here
 
 import random
-from typing import List, Tuple
 
 
 class Hero:
@@ -31,7 +30,7 @@ class Hero:
             The attack power of the hero.
 
         """
-        
+
         self.name = name
         self.health = health
         self.attack_power = attack_power
