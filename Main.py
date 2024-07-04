@@ -381,7 +381,7 @@ def main():
     player_name = input("Enter your name: ").strip()
     player = Player(player_name)
 
-    enemies_data: List[Tuple[str, int, int, int]] = [
+    enemies_data = [
         ("Deforestation", 80, 12, 20),
         ("Pollution", 70, 14, 25),
         ("Climate Change", 90, 11, 30),
@@ -389,7 +389,7 @@ def main():
         ("Plastic Pollution", 85, 14, 25),
     ]
 
-    enemies: List[Enemy] = [
+    enemies = [
         Enemy(name, health, attack_power, reward)
         for name, health, attack_power, reward in enemies_data
     ]
