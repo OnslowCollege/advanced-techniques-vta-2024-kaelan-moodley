@@ -13,6 +13,7 @@ Enviromental Conservation Game.
 import random
 from typing import List, Tuple
 
+
 class Hero:
     """E."""
 
