@@ -345,7 +345,10 @@ def main():
         ("Plastic Pollution", 85, 14, 25)
     ]
 
-    enemies: List[Enemy] = [Enemy(name, health, attack_power, reward) for name, health, attack_power, reward in enemies_data]  
+    enemies: List[Enemy] = [
+        Enemy(name, health, attack_power, reward)
+        for name, health, attack_power, reward in enemies_data
+    ]
 
     print("Welcome, eco-warrior! Your mission is to protect the environment.")
     print("You will face various adversaries harming the planet. Let's begin!")
