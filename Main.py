@@ -15,66 +15,68 @@ from typing import List, Tuple
 
 
 class Hero:
-    """E."""
+    """Represents a basic character in the game."""
 
     def __init__(self, name: str, health: int, attack_power: int):
         """
-        Initialize a Character object.
+        Initialize a Hero object.
 
         Parameters
         ----------
-        name: str:
-            The name of the character.
-        health: int: 
-            The health points of the character.
-        attack_power: int: 
-            The attack power of the character.
-        
+        name: str
+            The name of the hero.
+        health: int
+            The health points of the hero.
+        attack_power: int
+            The attack power of the hero.
         """
         self.name = name
         self.health = health
         self.attack_power = attack_power
 
-    def attack(self)-> int:
+    def attack(self) -> int:
         """
-        Simulate a character's attack.
-        
+        Simulate a hero's attack.
+
         Returns
         -------
-        The damage delt by the charcters attack.
-
+        int
+            The damage dealt by the hero's attack.
         """
         return random.randint(self.attack_power // 2, self.attack_power)
-    
+
     def is_alive(self) -> bool:
         """
-        Check if the charcter is still alive.
-        
+        Check if the hero is still alive.
+
         Returns
         -------
-        True if the charcter is alive, otherwise will return False.
-
+        bool
+            True if the hero is alive, otherwise False.
         """
         return self.health > 0
-    
-class Player(Hero): 
-    """E."""
+
+
+class Player(Hero):
+    """Represents the player in the game."""
 
     def __init__(self, name: str):
         """
-        Initialize a player object.
+        Initialize a Player object.
 
         Parameters
         ----------
-        name: str:
+        name: str
             The name of the player.
-
         """
         super().__init__(name, health=100, attack_power=20)
         self.dollars = 0
         self.inventory = {
-            "health potion": 2, "damage potion": 0, "super sword": 0
-            }
+            "health potion": 2,
+            "damage potion": 0,
+            "super sword": 0,
+        }
+        self.stats = {"battles_won": 0, "battles_lost": 0}
 
     def defend(self):
         """Simulate a player's defend action, which increases their health."""
@@ -87,24 +89,24 @@ class Player(Hero):
 
         Parameters
         ----------
-        potion_type: str:
+        potion_type: str
             The type of potion to use.
-        enemy: Enemy:
+        enemy: Enemy
             The enemy to affect if using a damage potion.
-
         """
         if self.inventory.get(potion_type, 0) > 0:
             self.inventory[potion_type] -= 1
             if potion_type == "health potion":
                 self.health = min(100, self.health + 25)
-                print(f"{self.name} uses a basic potion and regains 25 HP.")
+                print(f"{self.name} uses a health potion and regains 25 HP.")
             elif potion_type == "damage potion":
                 damage = 20
                 enemy.health -= damage
-                print(f"{self.name} uses a damage potion and deals {damage} " +
-                    f"damage to {enemy.name}!")
+                print(
+                    f"{self.name} uses a damage potion and deals {damage} damage to {enemy.name}!"
+                )
         else:
-            print(f"{self.name} has no {potion_type} left!")   
+            print(f"{self.name} has no {potion_type} left!")
 
     def add_dollars(self, amount: int):
         """
@@ -112,17 +114,46 @@ class Player(Hero):
 
         Parameters
         ----------
-        amount: int:
+        amount: int
             The amount of money to add.
-
-        """      
+        """
         self.dollars += amount
-        print(f"{self.name} earned {amount} dollars." +
-            f" Total dollars: {self.dollars}")
+        print(
+            f"{self.name} earned {amount} dollars. Total dollars: {self.dollars}"
+        )
+
+    def buy_item(self, item: str, cost: int):
+        """
+        Buy an item from the shop and add it to the player's inventory.
+
+        Parameters
+        ----------
+        item: str
+            The item to buy.
+        cost: int
+            The cost of the item.
+        """
+        if self.dollars >= cost:
+            self.dollars -= cost
+            if item in self.inventory:
+                self.inventory[item] += 1
+            else:
+                self.inventory[item] = 1
+
+            if item == "super sword":
+                self.attack_power += 10
+                print(
+                    f"{self.name} bought a {item}. Attack power increased by 10. Remaining dollars: {self.dollars}"
+                )
+            else:
+                print(
+                    f"{self.name} bought a {item}. Remaining dollars: {self.dollars}"
+                )
+        else:
+            print(f"{self.name} does not have enough dollars to buy {item}.")
 
     def show_stats(self):
         """Display the player's stats."""
-        
         print(f"\n{self.name}'s Stats:")
         print(f"Health: {self.health}")
         print(f"Attack Power: {self.attack_power}")
@@ -132,27 +163,27 @@ class Player(Hero):
         print(f"Battles Lost: {self.stats['battles_lost']}")
 
 
-class Enemy(Hero): 
-    """E."""
+class Enemy(Hero):
+    """Represents an enemy in the game."""
 
-    def _init_(self, name: str, health: int, attack_power: int, reward: int):
+    def __init__(self, name: str, health: int, attack_power: int, reward: int):
         """
         Initialize an Enemy object.
 
         Parameters
         ----------
-        name: str:
+        name: str
             The name of the enemy.
-        health: int:
+        health: int
             The health points of the enemy.
-        attack_power: int:
+        attack_power: int
             The attack power of the enemy.
-        reward: int:
+        reward: int
             The currency reward for defeating the enemy.
-
         """
         super().__init__(name, health, attack_power)
         self.reward = reward
+
 
 def get_player_choice() -> str:
     """
@@ -160,15 +191,17 @@ def get_player_choice() -> str:
 
     Returns
     -------
-    - str: The player's chosen action.
-
+    str
+        The player's chosen action.
     """
     while True:
-        player_choice = input("Choose your action (1. Attack, 2. Defend, 3." +
-                        "Use Health Potion, 4. Use Damage Potion): ").strip()
+        player_choice = input(
+            "Choose your action (1. Attack, 2. Defend, 3. Use Health Potion, 4. Use Damage Potion): "
+        ).strip()
         if player_choice in ["1", "2", "3", "4"]:
             return player_choice
         print("Invalid choice! Please enter 1, 2, 3, or 4.")
+
 
 def player_turn(player: Player, enemy: Enemy) -> bool:
     """
@@ -176,33 +209,29 @@ def player_turn(player: Player, enemy: Enemy) -> bool:
 
     Parameters
     ----------
-    player: Player: 
+    player: Player
         The player object.
-    enemy: Enemy:
+    enemy: Enemy
         The enemy object.
 
     Returns
     -------
-    - bool: True if the enemy is defeated, False otherwise.
-
+    bool
+        True if the enemy is defeated, False otherwise.
     """
-
     print(
-        f"{player.name}'s HP: {player.health} |" + 
-        f" {enemy.name}'s HP: {enemy.health}"
+        f"{player.name}'s HP: {player.health} | {enemy.name}'s HP: {enemy.health}"
     )
     player_choice = get_player_choice()
     if player_choice == "1":
         player_damage = player.attack()
         enemy.health -= player_damage
         print(
-            f"{player.name} attacks {enemy.name} and" +
-            " deals {player_damage} damage!"
+            f"{player.name} attacks {enemy.name} and deals {player_damage} damage!"
         )
         if enemy.health <= 0:
             print(
-                f"{player.name} defeated {enemy.name} " +
-                f"and earned {enemy.reward} dollars!"
+                f"{player.name} defeated {enemy.name} and earned {enemy.reward} dollars!"
             )
             player.add_dollars(enemy.reward)
             player.stats["battles_won"] += 1
@@ -215,13 +244,13 @@ def player_turn(player: Player, enemy: Enemy) -> bool:
         player.use_potion("damage potion", enemy)
         if enemy.health <= 0:
             print(
-                f"{player.name} defeated {enemy.name} " +
-                f"and earned {enemy.reward} dollars!"
+                f"{player.name} defeated {enemy.name} and earned {enemy.reward} dollars!"
             )
             player.add_dollars(enemy.reward)
             player.stats["battles_won"] += 1
             return True
     return False
+
 
 def enemy_turn(player: Player, enemy: Enemy) -> bool:
     """
@@ -229,25 +258,27 @@ def enemy_turn(player: Player, enemy: Enemy) -> bool:
 
     Parameters
     ----------
-    player: Player: 
+    player: Player
         The player object.
-    enemy: Enemy:
+    enemy: Enemy
         The enemy object.
 
     Returns
     -------
-    - bool: True if the player is defeated, False otherwise.
-
+    bool
+        True if the player is defeated, False otherwise.
     """
     enemy_damage = enemy.attack()
     player.health -= enemy_damage
-    print(f"{enemy.name} attacks {player.name} and deals" +
-        f" {enemy_damage} damage!")
+    print(
+        f"{enemy.name} attacks {player.name} and deals {enemy_damage} damage!"
+    )
     if player.health <= 0:
         print(f"{player.name} was defeated by {enemy.name}. Game over!")
-        player.stats['battles_lost'] += 1
+        player.stats["battles_lost"] += 1
         return True
     return False
+
 
 def battle(player: Player, enemy: Enemy) -> bool:
     """
@@ -255,15 +286,15 @@ def battle(player: Player, enemy: Enemy) -> bool:
 
     Parameters
     ----------
-    player: Player: 
+    player: Player
         The player object.
-    enemy: Enemy:
+    enemy: Enemy
         The enemy object.
 
     Returns
     -------
-    - bool: True if the player wins, False otherwise.
-    
+    bool
+        True if the player wins, False otherwise.
     """
     print(f"A wild {enemy.name} appears!")
     while player.is_alive() and enemy.is_alive():
@@ -274,9 +305,7 @@ def battle(player: Player, enemy: Enemy) -> bool:
     return player.is_alive()
 
 
-
 def shop_categorized(player: Player):
-
     """
     Display the shop menu with categorized items. Allows player to purchase.
 
@@ -284,43 +313,57 @@ def shop_categorized(player: Player):
     ----------
     player: Player
         The player object.
-
     """
     print("Welcome to the shop! Here are the items you can buy:")
     items = {
         "Potions": [
-            {"name": "health potion", 
-            "cost": 20, "description":
-            "Regains 25 HP"},
-            {"name": "damage potion", 
-            "cost": 30,
-            "description": "Deals 20 damage to the enemy"}
+            {
+                "name": "health potion",
+                "cost": 20,
+                "description": "Regains 25 HP",
+            },
+            {
+                "name": "damage potion",
+                "cost": 30,
+                "description": "Deals 20 damage to the enemy",
+            },
         ],
         "Weapons": [
-            {"name": "sword",
-            "cost": 50, 
-            "description": "Increases attack power by 5"},
-            {"name": "super sword",
-            "cost": 100,
-            "description": "Increases attack power by 10"}
-        ]
+            {
+                "name": "sword",
+                "cost": 50,
+                "description": "Increases attack power by 5",
+            },
+            {
+                "name": "super sword",
+                "cost": 100,
+                "description": "Increases attack power by 10",
+            },
+        ],
     }
 
     for category, category_items in items.items():
         print(f"\n{category}:")
         for idx, item in enumerate(category_items, start=1):
-            print(f"  {idx}. {item['name'].capitalize()}: "+ 
-                f" {item['cost']} dollars - {item['description']}")
+            print(
+                f"  {idx}. {item['name'].capitalize()}: {item['cost']} dollars - {item['description']}"
+            )
 
     while True:
-        category_choice = input("\nEnter the category (Potions/Weapons)"+
-        " you want to buy from or type 'exit' to leave: ").strip().capitalize()
+        category_choice = (
+            input(
+                "\nEnter the category (Potions/Weapons) you want to buy from or type 'exit' to leave: "
+            )
+            .strip()
+            .capitalize()
+        )
         if category_choice in items:
-            item_choice = input("Enter the number of the item you want to"+
-                    f" buy from {category_choice} or type 'back' to "+
-                    " choose another category: ").strip()
-            if item_choice.isdigit() and 1 <= int(item_choice) \
-                <= len(items[category_choice]):
+            item_choice = input(
+                f"Enter the number of the item you want to buy from {category_choice} or type 'back' to choose another category: "
+            ).strip()
+            if item_choice.isdigit() and 1 <= int(item_choice) <= len(
+                items[category_choice]
+            ):
                 selected_item = items[category_choice][int(item_choice) - 1]
                 player.buy_item(selected_item["name"], selected_item["cost"])
             elif item_choice.lower() == "back":
@@ -332,13 +375,13 @@ def shop_categorized(player: Player):
         else:
             print("Invalid category. Please try again.")
 
+
 def main():
     """Run the game."""
-
     player_name = input("Enter your name: ").strip()
     player = Player(player_name)
 
-    enemies_data: List[Tuple[str | int]] = [
+    enemies_data: List[Tuple[str, int, int, int]] = [
         ("Deforestation", 80, 12, 20),
         ("Pollution", 70, 14, 25),
         ("Climate Change", 90, 11, 30),
@@ -359,39 +402,35 @@ def main():
         print("1. Fight an enemy")
         print("2. Visit the shop")
         print("3. View stats")
-        print("4. Exit game") 
+        print("4. Exit game")
 
-        choice = input("Choose an option: ").strip() 
+        choice = input("Choose an option: ").strip()
 
         if choice == "1":
-                for i, enemy in enumerate(enemies, start=1):
-                    print(f"{i}. {enemy.name} (HP: {enemy.health}, " + 
-                f"Attack: {enemy.attack_power}, " + 
-                f"Reward: {enemy.reward} dollars)")
+            for i, enemy in enumerate(enemies, start=1):
+                print(
+                    f"{i}. {enemy.name} (HP: {enemy.health}, Attack: {enemy.attack_power}, Reward: {enemy.reward} dollars)"
+                )
 
-                enemy_choice =int(input("Choose an enemy to fight: ").strip())\
-                - 1
-                if 0 <= enemy_choice < len(enemies):
-                    if not battle(player, enemies[enemy_choice]):
-                        print("Game over!")
-                        break
-                    enemies.pop(enemy_choice)
-                else:
-                    print("Invalid choice. Please choose a valid enemy.")
-
+            enemy_choice = int(input("Choose an enemy to fight: ").strip()) - 1
+            if 0 <= enemy_choice < len(enemies):
+                if not battle(player, enemies[enemy_choice]):
+                    print("Game over!")
+                    break
+                enemies.pop(enemy_choice)
+            else:
+                print("Invalid choice. Please choose a valid enemy.")
         elif choice == "2":
-                shop_categorized(player)
-
+            shop_categorized(player)
         elif choice == "3":
-                player.show_stats()
-
+            player.show_stats()
         elif choice == "4":
-                print("Thank you for playing! Goodbye.")
-                break
-
+            print("Thank you for playing! Goodbye.")
+            break
         else:
             print("Invalid choice. Please select a valid option.")
 
 
 if __name__ == "__main__":
     main()
+
