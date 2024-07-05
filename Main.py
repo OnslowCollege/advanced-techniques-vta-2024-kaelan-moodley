@@ -329,7 +329,7 @@ def battle(player: Player, enemy: Enemy) -> bool:
 
     """
 
-    print(f"A wild {enemy.name} appears!")
+    print(f"The terrible {enemy.name} appears!")
     while player.is_alive() and enemy.is_alive():
         if player_turn(player, enemy):
             return True
@@ -355,7 +355,7 @@ def shop_categorized(player: Player):
             {
                 "name": "health potion",
                 "cost": 20,
-                "description": "Regains 25 HP",
+                "description": "Regains 15 HP",
             },
             {
                 "name": "damage potion",
@@ -370,7 +370,7 @@ def shop_categorized(player: Player):
                 "description": "Increases attack power by 5",
             },
             {
-                "name": "super sword",
+                "name": "excaliber",
                 "cost": 100,
                 "description": "Increases attack power by 10",
             },
