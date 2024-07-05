@@ -155,7 +155,7 @@ class Player(Hero):
             else:
                 self.inventory[item] = 1
 
-            if item == "super sword":
+            if item == "excaliber":
                 self.attack_power += 10
                 print(
                     f"{self.name} bought a {item}. "+
