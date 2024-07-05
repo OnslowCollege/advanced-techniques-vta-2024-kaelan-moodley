@@ -448,7 +448,9 @@ def main():
         if choice == "1":
             for i, enemy in enumerate(enemies, start=1):
                 print(
-                    f"{i}. {enemy.name} (HP: {enemy.health}, Attack: {enemy.attack_power}, Reward: {enemy.reward} dollars)"
+                    f"{i}. {enemy.name} (HP: {enemy.health}, "+
+                    f"Attack: {enemy.attack_power}, Reward: "+
+                    f" {enemy.reward} dollars)"
                 )
 
             enemy_choice = int(input("Choose an enemy to fight: ").strip()) - 1
