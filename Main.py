@@ -381,20 +381,24 @@ def shop_categorized(player: Player):
         print(f"\n{category}:")
         for idx, item in enumerate(category_items, start=1):
             print(
-                f"  {idx}. {item['name'].capitalize()}: {item['cost']} dollars - {item['description']}"
+                f"  {idx}. {item['name'].capitalize()}:"+
+                f" {item['cost']} dollars - {item['description']}"
             )
 
     while True:
         category_choice = (
             input(
-                "\nEnter the category (Potions/Weapons) you want to buy from or type 'exit' to leave: "
+                "\nEnter the category (Potions/Weapons) you want to buy from "+
+                "or type 'exit' to leave: "
             )
             .strip()
             .capitalize()
         )
         if category_choice in items:
             item_choice = input(
-                f"Enter the number of the item you want to buy from {category_choice} or type 'back' to choose another category: "
+                "Enter the number of the item you want to buy from "+
+                f" {category_choice} or type 'back' to choose another"+
+                " category: "
             ).strip()
             if item_choice.isdigit() and 1 <= int(item_choice) <= len(
                 items[category_choice]
