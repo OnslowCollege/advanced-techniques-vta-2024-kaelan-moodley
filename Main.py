@@ -421,11 +421,11 @@ def main():
     player = Player(player_name)
 
     enemies_data = [
-        ("Deforestation", 100, 12, 30),
-        ("Pollution", 100, 14, 35),
-        ("Climate Change", 100, 15, 40),
+        ("Deforestation", 150, 12, 50),
+        ("Pollution", 130, 14, 35),
+        ("Climate Change", 140, 15, 40),
         ("Overfishing", 120, 20, 45),
-        ("Plastic Pollution", 150, 25, 50),
+        ("Plastic Pollution", 150, 25, 75),
     ]
 
     enemies = [
