@@ -87,8 +87,8 @@ class Player(Hero):
 
     def defend(self):
         """Simulate a player's defend action, which increases their health."""
-        self.health = min(100, self.health + 5)
-        print(f"{self.name} defends and regains 5 HP.")
+        self.health = min(100, self.health + 8)
+        print(f"{self.name} defends and regains 8 HP.")
 
     def use_potion(self, potion_type: str, enemy: "Enemy"):
         """
