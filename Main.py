@@ -112,7 +112,8 @@ class Player(Hero):
                 damage = 20
                 enemy.health -= damage
                 print(
-                    f"{self.name} uses a damage potion and deals {damage} damage to {enemy.name}!"
+                    f"{self.name} uses a damage potion and deals"+
+                    f" {damage} damage to {enemy.name}!"
                 )
         else:
             print(f"{self.name} has no {potion_type} left!")
@@ -130,7 +131,8 @@ class Player(Hero):
 
         self.dollars += amount
         print(
-            f"{self.name} earned {amount} dollars. Total dollars: {self.dollars}"
+            f"{self.name} earned {amount} dollars. "+
+            f"Total dollars: {self.dollars}"
         )
 
     def buy_item(self, item: str, cost: int):
@@ -156,11 +158,14 @@ class Player(Hero):
             if item == "super sword":
                 self.attack_power += 10
                 print(
-                    f"{self.name} bought a {item}. Attack power increased by 10. Remaining dollars: {self.dollars}"
+                    f"{self.name} bought a {item}. "+
+                    "Attack power increased by 10. "+
+                    f"Remaining dollars: {self.dollars}"
                 )
             else:
                 print(
-                    f"{self.name} bought a {item}. Remaining dollars: {self.dollars}"
+                    f"{self.name} bought a {item}."+
+                    f" Remaining dollars: {self.dollars}"
                 )
         else:
             print(f"{self.name} does not have enough dollars to buy {item}.")
@@ -213,7 +218,8 @@ def get_player_choice() -> str:
 
     while True:
         player_choice = input(
-            "Choose your action (1. Attack, 2. Defend, 3. Use Health Potion, 4. Use Damage Potion): "
+            "Choose your action (1. Attack, 2. Defend, 3. Use Health Potion,"+
+            " 4. Use Damage Potion): "
         ).strip()
         if player_choice in ["1", "2", "3", "4"]:
             return player_choice
@@ -239,18 +245,21 @@ def player_turn(player: Player, enemy: Enemy) -> bool:
     """
 
     print(
-        f"{player.name}'s HP: {player.health} | {enemy.name}'s HP: {enemy.health}"
+        f"{player.name}'s HP: {player.health} | "+
+        f"{enemy.name}'s HP: {enemy.health}"
     )
     player_choice = get_player_choice()
     if player_choice == "1":
         player_damage = player.attack()
         enemy.health -= player_damage
         print(
-            f"{player.name} attacks {enemy.name} and deals {player_damage} damage!"
+            f"{player.name} attacks {enemy.name}"+
+            f" and deals {player_damage} damage!"
         )
         if enemy.health <= 0:
             print(
-                f"{player.name} defeated {enemy.name} and earned {enemy.reward} dollars!"
+                f"{player.name} defeated {enemy.name} "+
+                f"and earned {enemy.reward} dollars!"
             )
             player.add_dollars(enemy.reward)
             player.stats["battles_won"] += 1
@@ -263,7 +272,8 @@ def player_turn(player: Player, enemy: Enemy) -> bool:
         player.use_potion("damage potion", enemy)
         if enemy.health <= 0:
             print(
-                f"{player.name} defeated {enemy.name} and earned {enemy.reward} dollars!"
+                f"{player.name} defeated {enemy.name} "+
+                f"and earned {enemy.reward} dollars!"
             )
             player.add_dollars(enemy.reward)
             player.stats["battles_won"] += 1
