@@ -81,14 +81,14 @@ class Player(Hero):
         self.inventory = {
             "health potion": 2,
             "damage potion": 0,
-            "super sword": 0,
+            "excaliber": 0,
         }
         self.stats = {"battles_won": 0, "battles_lost": 0}
 
     def defend(self):
         """Simulate a player's defend action, which increases their health."""
-        self.health = min(100, self.health + 15)
-        print(f"{self.name} defends and regains 15 HP.")
+        self.health = min(100, self.health + 5)
+        print(f"{self.name} defends and regains 5 HP.")
 
     def use_potion(self, potion_type: str, enemy: "Enemy"):
         """
@@ -106,8 +106,8 @@ class Player(Hero):
         if self.inventory.get(potion_type, 0) > 0:
             self.inventory[potion_type] -= 1
             if potion_type == "health potion":
-                self.health = min(100, self.health + 25)
-                print(f"{self.name} uses a health potion and regains 25 HP.")
+                self.health = min(100, self.health + 15)
+                print(f"{self.name} uses a health potion and regains 15 HP.")
             elif potion_type == "damage potion":
                 damage = 20
                 enemy.health -= damage
