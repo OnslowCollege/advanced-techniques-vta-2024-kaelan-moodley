@@ -456,14 +456,20 @@ def main():
                     f" {enemy.reward} dollars)"
                 )
 
-            enemy_choice = int(input("Choose an enemy to fight: ").strip()) - 1
-            if 0 <= enemy_choice < len(enemies):
-                if not battle(player, enemies[enemy_choice]):
-                    print("Game over!")
-                    break
-                enemies.pop(enemy_choice)
-            else:
-                print("Invalid choice. Please choose a valid enemy.")
+            enemy_choice = input("Choose an enemy to fight: ").strip() - 1
+            try:
+                enemy_choice = int(enemy_choice)
+                if 0 <= enemy_choice < len(enemies):
+                    if not battle(player, enemies[enemy_choice]):
+                        print("Game over!")
+                        break
+                    enemies.pop(enemy_choice)
+                else:
+                    print("Invalid choice. Please choose a valid enemy.")
+
+            except ValueError:
+                print("Invalid choice, pleae enter a valid choice.")
+
         elif choice == "2":
             shop_categorized(player)
         elif choice == "3":
