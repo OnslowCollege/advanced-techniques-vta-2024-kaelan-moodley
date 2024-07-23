@@ -456,9 +456,9 @@ def main():
                     f" {enemy.reward} dollars)"
                 )
 
-            enemy_choice = input("Choose an enemy to fight: ").strip() - 1
+            enemy_choice = input("Choose an enemy to fight: ").strip()
             try:
-                enemy_choice = int(enemy_choice)
+                enemy_choice = int(enemy_choice) - 1
                 if 0 <= enemy_choice < len(enemies):
                     if not battle(player, enemies[enemy_choice]):
                         print("Game over!")
