@@ -468,7 +468,7 @@ def main():
                     print("Invalid choice. Please choose a valid enemy.")
 
             except ValueError:
-                print("Invalid choice, pleae enter a valid choice.")
+                print("Invalid choice, please enter a valid choice.")
 
         elif choice == "2":
             shop_categorized(player)
