@@ -80,7 +80,8 @@ class Player(Hero):
         self.dollars = 0
         self.inventory = {
             "health potion": 2,
-            "damage potion": 0,
+            "damage potion": 1,
+            "sword": 0,
             "excaliber": 0,
         }
         self.stats = {"battles_won": 0, "battles_lost": 0}
@@ -109,7 +110,7 @@ class Player(Hero):
                 self.health = min(100, self.health + 15)
                 print(f"{self.name} uses a health potion and regains 15 HP.")
             elif potion_type == "damage potion":
-                damage = 20
+                damage = 25
                 enemy.health -= damage
                 print(
                     f"{self.name} uses a damage potion and deals"+
@@ -176,7 +177,9 @@ class Player(Hero):
         print(f"Health: {self.health}")
         print(f"Attack Power: {self.attack_power}")
         print(f"Dollars: {self.dollars}")
-        print(f"Inventory: {self.inventory}")
+        print("Inventory:")
+        for item, quantity in self.inventory.items():
+            print(f"  - {item}: {quantity}")
         print(f"Battles Won: {self.stats['battles_won']}")
         print(f"Battles Lost: {self.stats['battles_lost']}")
 
