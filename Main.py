@@ -422,7 +422,7 @@ def main():
     """Run the game."""
     player_name = input("Enter your name: ").strip()
     player = Player(player_name)
-
+isaa
     enemies_data = [
         ("Deforestation", 110, 12, 100),
         ("Pollution", 120, 14, 35),
