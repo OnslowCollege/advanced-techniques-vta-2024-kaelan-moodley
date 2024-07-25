@@ -271,6 +271,7 @@ def player_turn(player: Player, enemy: Enemy) -> bool:
         player.defend()
     elif player_choice == "3":
         player.use_potion("health potion", enemy)
+        return True  # Skip enemy's turn
     elif player_choice == "4":
         player.use_potion("damage potion", enemy)
         if enemy.health <= 0:
