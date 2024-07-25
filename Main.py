@@ -482,6 +482,13 @@ def main():
         else:
             print("Invalid choice. Please select a valid option.")
 
+    # Ask the player if they want to restart the game after losing
+        if not player.is_alive():
+            restart_choice = input("Would you like to start over? "+
+                " (yes/no): ").strip().lower()
+            if restart_choice != "yes":
+                print("Thank you for playing! Goodbye.")
+                break
 
 if __name__ == "__main__":
     main()
