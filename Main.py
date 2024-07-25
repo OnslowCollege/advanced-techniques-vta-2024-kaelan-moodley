@@ -337,6 +337,8 @@ def battle(player: Player, enemy: Enemy) -> bool:
     while player.is_alive() and enemy.is_alive():
         if player_turn(player, enemy):
             return True
+        if player_turn(player, enemy):
+            continue  # Skip the enemy's turn if the player used a potion
         if enemy_turn(player, enemy):
             return False
     return player.is_alive()
