@@ -463,7 +463,7 @@ def main():
                 enemy_choice = int(enemy_choice) - 1
                 if 0 <= enemy_choice < len(enemies):
                     if not battle(player, enemies[enemy_choice]):
-                        print("Game over! {enemy_choice} has won ")
+                        print("Game over!")
                         break
                     enemies.pop(enemy_choice)
                 else:
