@@ -11,6 +11,7 @@ Enviromental Conservation Game.
 # Enter your code here
 
 import random
+import re
 
 
 class Hero:
@@ -423,7 +424,14 @@ def shop_categorized(player: Player):
 
 def main():
     """Run the game."""
-    player_name = input("Enter your name: ").strip()
+    while True:
+        player_name = input("Enter your name: ").strip()
+        if re.fullmatch(r"[A-Za-z]+", player_name):
+            break
+        else:
+            print("Invalid name. Please enter a name with only "+
+                    " alphabetic characters.")
+
     player = Player(player_name)
     enemies_data = [
         ("Deforestation", 110, 12, 100),
