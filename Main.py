@@ -428,8 +428,7 @@ def main():
         player_name = input("Enter your name: ").strip()
         if player_name.isalpha():
             break
-        else:
-            print("Invalid name. Please enter a name with only "+
+        print("Invalid name. Please enter a name with only "+
                     " alphabetic characters.")
 
     player = Player(player_name)
