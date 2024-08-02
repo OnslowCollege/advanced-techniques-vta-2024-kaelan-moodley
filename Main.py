@@ -11,7 +11,6 @@ Enviromental Conservation Game.
 # Enter your code here
 
 import random
-import re
 
 
 class Hero:
