@@ -426,7 +426,7 @@ def main():
     """Run the game."""
     while True:
         player_name = input("Enter your name: ").strip()
-        if re.fullmatch(r"[A-Za-z]+", player_name):
+        if player_name.isalpha():
             break
         else:
             print("Invalid name. Please enter a name with only "+
