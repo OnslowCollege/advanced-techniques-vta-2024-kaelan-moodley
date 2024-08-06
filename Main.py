@@ -57,8 +57,6 @@ class Hero:
 
         """
         return self.health > 0
-
-
 class Player(Hero):
     """Represents the player in the game."""
 
@@ -175,8 +173,6 @@ class Player(Hero):
             print(f"  - {item}: {quantity}")
         print(f"Battles Won: {self.stats['battles_won']}")
         print(f"Battles Lost: {self.stats['battles_lost']}")
-
-
 class Enemy(Hero):
     """Represents an enemy in the game."""
 
@@ -199,7 +195,6 @@ class Enemy(Hero):
         super().__init__(name, health, attack_power)
         self.reward = reward
 
-
 def get_player_choice() -> str:
     """
     Get the player's choice of action.
@@ -218,7 +213,6 @@ def get_player_choice() -> str:
         if player_choice in ["1", "2", "3", "4"]:
             return player_choice
         print("Invalid choice! Please enter 1, 2, 3, or 4.")
-
 
 def player_turn(player: Player, enemy: Enemy) -> bool:
     """
@@ -274,7 +268,6 @@ def player_turn(player: Player, enemy: Enemy) -> bool:
             return True
     return False
 
-
 def enemy_turn(player: Player, enemy: Enemy) -> bool:
     """
     Handle the enemy's turn.
@@ -303,7 +296,6 @@ def enemy_turn(player: Player, enemy: Enemy) -> bool:
         return True
     return False
 
-
 def battle(player: Player, enemy: Enemy) -> bool:
     """
     Simulate a battle between a player and an enemy.
@@ -330,7 +322,6 @@ def battle(player: Player, enemy: Enemy) -> bool:
         if enemy_turn(player, enemy):
             return False
     return player.is_alive()
-
 
 def shop_categorized(player: Player):
     """
@@ -406,7 +397,6 @@ def shop_categorized(player: Player):
             break
         else:
             print("Invalid category. Please try again.")
-
 
 def main():
     """Run the game."""
