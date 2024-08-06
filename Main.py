@@ -424,7 +424,12 @@ def main():
         " desertification, soil erosion, fewer crops, flooding, increased " + 
         " greenhouse gases in the atmosphere, and a host of problems for " + 
         "Indigenous people."),
-        ("Pollution", 120, 14, 35),
+        ("Pollution", 120, 14, 35, "Air pollution can damage crops and " +
+        " trees in a variety of ways. Ground-level ozone can lead to " + 
+        " reductions in agricultural crop and commercial forest yields, " + 
+        "reduced growth and survivability of tree seedlings, and increased " + 
+        "plant susceptibility to disease, pests and other environmental " + 
+        "stresses (such as harsh weather)."),
         ("Climate Change", 130, 15, 40),
         ("Overfishing", 140, 20, 45),
         ("Plastic Pollution", 150, 25, 75),
