@@ -80,10 +80,12 @@ class Player(Hero):
         }
         self.stats = {"battles_won": 0, "battles_lost": 0}
 
+
     def defend(self):
         """Simulate a player's defend action, which increases their health."""
         self.health = min(100, self.health + 8)
         print(f"{self.name} defends and regains 8 HP.")
+
 
     def use_potion(self, potion_type: str, enemy: "Enemy"):
         """
@@ -112,6 +114,7 @@ class Player(Hero):
         else:
             print(f"{self.name} has no {potion_type} left!")
 
+
     def add_dollars(self, amount: int):
         """
         Add money to the player's total.
@@ -127,6 +130,7 @@ class Player(Hero):
             f"{self.name} earned {amount} dollars. " +
             f"Total dollars: {self.dollars}"
         )
+
 
     def buy_item(self, item: str, cost: int):
         """
@@ -161,6 +165,7 @@ class Player(Hero):
                 )
         else:
             print(f"{self.name} does not have enough dollars to buy {item}.")
+
 
     def show_stats(self):
         """Display the player's stats."""
