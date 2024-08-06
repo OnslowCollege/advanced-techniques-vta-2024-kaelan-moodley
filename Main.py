@@ -430,7 +430,7 @@ def main():
         "reduced growth and survivability of tree seedlings, and increased " + 
         "plant susceptibility to disease, pests and other environmental " + 
         "stresses (such as harsh weather)."),
-        ("Climate Change", 130, 15, 40),
+        ("Climate Change", 130, 15, 40, ""),
         ("Overfishing", 140, 20, 45),
         ("Plastic Pollution", 150, 25, 75),
     ]
