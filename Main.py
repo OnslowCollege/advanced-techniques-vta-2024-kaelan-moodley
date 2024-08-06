@@ -377,7 +377,7 @@ def shop_categorized(player: Player):
     while True:
         category_choice = (
             input(
-                "\nEnter the category (Potions/Weapons) you want to buy from " 
+                "\nEnter the category (Potions/Weapons) you want to buy from "
                 + "or type 'exit' to leave: "
             )
             .strip()
