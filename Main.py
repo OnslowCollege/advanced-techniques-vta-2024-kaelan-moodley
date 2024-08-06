@@ -195,6 +195,7 @@ class Enemy(Hero):
         super().__init__(name, health, attack_power)
         self.reward = reward
 
+
 def get_player_choice() -> str:
     """
     Get the player's choice of action.
@@ -207,12 +208,13 @@ def get_player_choice() -> str:
     """
     while True:
         player_choice = input(
-            "Choose your action (1. Attack, 2. Defend, 3. Use Health Potion,"+
+            "Choose your action (1. Attack, 2. Defend, 3. Use Health Potion," +
             " 4. Use Damage Potion): "
         ).strip()
         if player_choice in ["1", "2", "3", "4"]:
             return player_choice
         print("Invalid choice! Please enter 1, 2, 3, or 4.")
+
 
 def player_turn(player: Player, enemy: Enemy) -> bool:
     """
@@ -232,7 +234,7 @@ def player_turn(player: Player, enemy: Enemy) -> bool:
 
     """
     print(
-        f"{player.name}'s HP: {player.health} | "+
+        f"{player.name}'s HP: {player.health} | " +
         f"{enemy.name}'s HP: {enemy.health}"
     )
     player_choice = get_player_choice()
@@ -240,12 +242,12 @@ def player_turn(player: Player, enemy: Enemy) -> bool:
         player_damage = player.attack()
         enemy.health -= player_damage
         print(
-            f"{player.name} attacks {enemy.name}"+
+            f"{player.name} attacks {enemy.name}" +
             f" and deals {player_damage} damage!"
         )
         if enemy.health <= 0:
             print(
-                f"{player.name} defeated {enemy.name} "+
+                f"{player.name} defeated {enemy.name} " +
                 f"and earned {enemy.reward} dollars!"
             )
             player.add_dollars(enemy.reward)
@@ -260,13 +262,14 @@ def player_turn(player: Player, enemy: Enemy) -> bool:
         player.use_potion("damage potion", enemy)
         if enemy.health <= 0:
             print(
-                f"{player.name} defeated {enemy.name} "+
+                f"{player.name} defeated {enemy.name} " +
                 f"and earned {enemy.reward} dollars!"
             )
             player.add_dollars(enemy.reward)
             player.stats["battles_won"] += 1
             return True
     return False
+
 
 def enemy_turn(player: Player, enemy: Enemy) -> bool:
     """
@@ -365,23 +368,23 @@ def shop_categorized(player: Player):
         print(f"\n{category}:")
         for idx, item in enumerate(category_items, start=1):
             print(
-                f"  {idx}. {item['name'].capitalize()}:"+
+                f"  {idx}. {item['name'].capitalize()}:" +
                 f" {item['cost']} dollars - {item['description']}"
             )
 
     while True:
         category_choice = (
             input(
-                "\nEnter the category (Potions/Weapons) you want to buy from "+
-                "or type 'exit' to leave: "
+                "\nEnter the category (Potions/Weapons) you want to buy from " 
+                + "or type 'exit' to leave: "
             )
             .strip()
             .capitalize()
         )
         if category_choice in items:
             item_choice = input(
-                "Enter the number of the item you want to buy from "+
-                f" {category_choice} or type 'back' to choose another"+
+                "Enter the number of the item you want to buy from " +
+                f" {category_choice} or type 'back' to choose another" +
                 " category: "
             ).strip()
             if item_choice.isdigit() and 1 <= int(item_choice) <= len(
@@ -404,7 +407,7 @@ def main():
         player_name = input("Enter your name: ").strip()
         if player_name.isalpha():
             break
-        print("Invalid name. Please enter a name with only "+
+        print("Invalid name. Please enter a name with only " +
                     " alphabetic characters.")
 
     player = Player(player_name)
@@ -436,8 +439,8 @@ def main():
         if choice == "1":
             for i, enemy in enumerate(enemies, start=1):
                 print(
-                    f"{i}. {enemy.name} (HP: {enemy.health}, "+
-                    f"Attack: {enemy.attack_power}, Reward: "+
+                    f"{i}. {enemy.name} (HP: {enemy.health}, " +
+                    f"Attack: {enemy.attack_power}, Reward: " +
                     f" {enemy.reward} dollars)"
                 )
 
