@@ -403,6 +403,7 @@ def shop_categorized(player: Player):
         else:
             print("Invalid category. Please try again.")
 
+
 def main():
     """Run the game."""
     while True:
@@ -410,7 +411,7 @@ def main():
         if player_name.isalpha():
             break
         print("Invalid name. Please enter a name with only " +
-                    " alphabetic characters.")
+              " alphabetic characters.")
 
     player = Player(player_name)
     enemies_data = [
@@ -469,6 +470,7 @@ def main():
             break
         else:
             print("Invalid choice. Please select a valid option.")
+
 
 if __name__ == "__main__":
     main()
