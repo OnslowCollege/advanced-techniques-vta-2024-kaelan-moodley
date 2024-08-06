@@ -108,7 +108,7 @@ class Player(Hero):
                 damage = 25
                 enemy.health -= damage
                 print(
-                    f"{self.name} uses a damage potion and deals"+
+                    f"{self.name} uses a damage potion and deals" +
                     f" {damage} damage to {enemy.name}!"
                 )
         else:
@@ -126,7 +126,7 @@ class Player(Hero):
         """
         self.dollars += amount
         print(
-            f"{self.name} earned {amount} dollars. "+
+            f"{self.name} earned {amount} dollars. " +
             f"Total dollars: {self.dollars}"
         )
 
@@ -152,13 +152,13 @@ class Player(Hero):
             if item == "excaliber":
                 self.attack_power += 10
                 print(
-                    f"{self.name} bought a {item}. "+
-                    "Attack power increased by 10. "+
+                    f"{self.name} bought a {item}. " +
+                    "Attack power increased by 10. " +
                     f"Remaining dollars: {self.dollars}"
                 )
             else:
                 print(
-                    f"{self.name} bought a {item}."+
+                    f"{self.name} bought a {item}." +
                     f" Remaining dollars: {self.dollars}"
                 )
         else:
