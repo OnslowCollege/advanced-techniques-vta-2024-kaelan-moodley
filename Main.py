@@ -419,11 +419,7 @@ def main():
 
     player = Player(player_name)
     enemies_data = [
-        ("Deforestation", 110, 12, 100, "The loss of trees and other " + 
-        " vegetation (Deforestation) can cause climate change, " + 
-        " desertification, soil erosion, fewer crops, flooding, increased " + 
-        " greenhouse gases in the atmosphere, and a host of problems for " + 
-        "Indigenous people."),
+        ("Deforestation", 110, 12, 100 ),
         ("Pollution", 120, 14, 35, "Air pollution can damage crops and " +
         " trees in a variety of ways. Ground-level ozone can lead to " + 
         " reductions in agricultural crop and commercial forest yields, " + 
