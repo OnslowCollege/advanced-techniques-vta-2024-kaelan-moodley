@@ -57,6 +57,7 @@ class Hero:
 
         """
         return self.health > 0
+
 class Player(Hero):
     """Represents the player in the game."""
 
