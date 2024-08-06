@@ -442,8 +442,12 @@ def main():
         "Health Risks: Pollution, disease, and malnutrition causing  " + 
         "millions of deaths. Poverty and Displacement: Increased poverty " + 
         "and displacement due to climate impacts."),
-        ("Overfishing", 140, 20, 45),
-        ("Plastic Pollution", 150, 25, 75),
+        ("Overfishing", 140, 20, 45, "Overfishing and destructive fishing " + 
+        "not only devastates fish populations and wildlife, breaks down the " +
+        " food web and degrades habitats, it undermines the ocean's ability " +
+        "to perform critical ecosystem services such as storing carbon " + 
+        " that is needed for climate mitigation."),
+        ("Plastic Pollution", 150, 25, 75, ),
     ]
 
     enemies = [
