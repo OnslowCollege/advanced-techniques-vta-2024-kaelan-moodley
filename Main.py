@@ -420,12 +420,7 @@ def main():
     player = Player(player_name)
     enemies_data = [
         ("Deforestation", 110, 12, 100 ),
-        ("Pollution", 120, 14, 35, "Air pollution can damage crops and " +
-        " trees in a variety of ways. Ground-level ozone can lead to " + 
-        " reductions in agricultural crop and commercial forest yields, " + 
-        "reduced growth and survivability of tree seedlings, and increased " + 
-        "plant susceptibility to disease, pests and other environmental " + 
-        "stresses (such as harsh weather)."),
+        ("Pollution", 120, 14, 35 ),
         ("Climate Change", 130, 15, 40, "Climate change causes a variety " + 
         "of problems, including; Rising Temperatures: Increased heat, more " + 
         " illnesses, wildfires, and rapid Arctic warming. Severe Storms: " + 
