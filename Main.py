@@ -58,6 +58,7 @@ class Hero:
         """
         return self.health > 0
 
+
 class Player(Hero):
     """Represents the player in the game."""
 
@@ -174,6 +175,8 @@ class Player(Hero):
             print(f"  - {item}: {quantity}")
         print(f"Battles Won: {self.stats['battles_won']}")
         print(f"Battles Lost: {self.stats['battles_lost']}")
+
+
 class Enemy(Hero):
     """Represents an enemy in the game."""
 
