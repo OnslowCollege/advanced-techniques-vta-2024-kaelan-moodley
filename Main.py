@@ -430,7 +430,18 @@ def main():
         "reduced growth and survivability of tree seedlings, and increased " + 
         "plant susceptibility to disease, pests and other environmental " + 
         "stresses (such as harsh weather)."),
-        ("Climate Change", 130, 15, 40, ""),
+        ("Climate Change", 130, 15, 40, "Climate change causes a variety " + 
+        "of problems, including; Rising Temperatures: Increased heat, more " + 
+        " illnesses, wildfires, and rapid Arctic warming. Severe Storms: " + 
+        " Intense storms, extreme rainfall, and flooding. " + 
+        "Increased Drought: Worsened water shortages, affecting food " + 
+        "production. Warming Oceans: Rising sea levels and ocean " + 
+        " acidity, harming marine life. Species Loss: Accelerated " + 
+        "extinction, one million species at risk. Food Insecurity: " + 
+        "Harm to fisheries, crops, and livestock, leading to hunger. " + 
+        "Health Risks: Pollution, disease, and malnutrition causing  " + 
+        "millions of deaths. Poverty and Displacement: Increased poverty " + 
+        "and displacement due to climate impacts."),
         ("Overfishing", 140, 20, 45),
         ("Plastic Pollution", 150, 25, 75),
     ]
