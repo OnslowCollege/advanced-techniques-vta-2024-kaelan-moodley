@@ -299,6 +299,7 @@ def enemy_turn(player: Player, enemy: Enemy) -> bool:
         return True
     return False
 
+
 def battle(player: Player, enemy: Enemy) -> bool:
     """
     Simulate a battle between a player and an enemy.
@@ -325,6 +326,7 @@ def battle(player: Player, enemy: Enemy) -> bool:
         if enemy_turn(player, enemy):
             return False
     return player.is_alive()
+
 
 def shop_categorized(player: Player):
     """
