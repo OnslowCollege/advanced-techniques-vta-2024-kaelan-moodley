@@ -419,35 +419,70 @@ def main():
 
     player = Player(player_name)
     enemies_data = [
-        ("Deforestation", 110, 12, 100, "The loss of trees and other " + 
-        " vegetation (Deforestation) can cause climate change, " + 
-        " desertification, soil erosion, fewer crops, flooding, increased " + 
-        " greenhouse gases in the atmosphere, and a host of problems for " + 
-        "Indigenous people."),
-        ("Pollution", 120, 14, 35, "Air pollution can damage crops and " +
-        " trees in a variety of ways. Ground-level ozone can lead to " + 
-        " reductions in agricultural crop and commercial forest yields, " + 
-        "reduced growth and survivability of tree seedlings, and increased " + 
-        "plant susceptibility to disease, pests and other environmental " + 
-        "stresses (such as harsh weather)."),
-        ("Climate Change", 130, 15, 40, "Climate change causes a variety " + 
-        "of problems, including; Rising Temperatures: Increased heat, more " + 
-        " illnesses, wildfires, and rapid Arctic warming. Severe Storms: " + 
-        " Intense storms, extreme rainfall, and flooding. " + 
-        "Increased Drought: Worsened water shortages, affecting food " + 
-        "production. Warming Oceans: Rising sea levels and ocean " + 
-        " acidity, harming marine life. Species Loss: Accelerated " + 
-        "extinction, one million species at risk. Food Insecurity: " + 
-        "Harm to fisheries, crops, and livestock, leading to hunger. " + 
-        "Health Risks: Pollution, disease, and malnutrition causing  " + 
-        "millions of deaths. Poverty and Displacement: Increased poverty " + 
-        "and displacement due to climate impacts."),
-        ("Overfishing", 140, 20, 45, "Overfishing and destructive fishing " + 
-        "not only devastates fish populations and wildlife, breaks down the " +
-        " food web and degrades habitats, it undermines the ocean's ability " +
-        "to perform critical ecosystem services such as storing carbon " + 
-        " that is needed for climate mitigation."),
-        ("Plastic Pollution", 150, 25, 75, ),
+        (
+            "Deforestation",
+            110,
+            12,
+            100,
+            "The loss of trees and other "
+            + " vegetation (Deforestation) can cause climate change, "
+            + " desertification, soil erosion, fewer crops, flooding, increased "
+            + " greenhouse gases in the atmosphere, and a host of problems for "
+            + "Indigenous people.",
+        ),
+        (
+            "Pollution",
+            120,
+            14,
+            35,
+            "Air pollution can damage crops and "
+            + " trees in a variety of ways. Ground-level ozone can lead to "
+            + " reductions in agricultural crop and commercial forest yields, "
+            + "reduced growth and survivability of tree seedlings, and increased "
+            + "plant susceptibility to disease, pests and other environmental "
+            + "stresses (such as harsh weather).",
+        ),
+        (
+            "Climate Change",
+            130,
+            15,
+            40,
+            "Climate change causes a variety "
+            + "of problems, including; Rising Temperatures: Increased heat, more "
+            + " illnesses, wildfires, and rapid Arctic warming. Severe Storms: "
+            + " Intense storms, extreme rainfall, and flooding. "
+            + "Increased Drought: Worsened water shortages, affecting food "
+            + "production. Warming Oceans: Rising sea levels and ocean "
+            + " acidity, harming marine life. Species Loss: Accelerated "
+            + "extinction, one million species at risk. Food Insecurity: "
+            + "Harm to fisheries, crops, and livestock, leading to hunger. "
+            + "Health Risks: Pollution, disease, and malnutrition causing  "
+            + "millions of deaths. Poverty and Displacement: Increased poverty "
+            + "and displacement due to climate impacts.",
+        ),
+        (
+            "Overfishing",
+            140,
+            20,
+            45,
+            "Overfishing and destructive fishing "
+            + "not only devastates fish populations and wildlife, breaks down the "
+            + " food web and degrades habitats, it undermines the ocean's ability "
+            + "to perform critical ecosystem services such as storing carbon "
+            + " that is needed for climate mitigation.",
+        ),
+        (
+            "Plastic Pollution",
+            150,
+            25,
+            75,
+            "Unlike other materials, plastic "
+            + "does not biodegrade. It can take up to 1,000 years to break down, "
+            + "so when it is discarded, it builds up in the environment until it "
+            + "reaches a crisis point. This pollution chokes marine wildlife, "
+            + "damages soil and poisons groundwater, and can cause serious "
+            + "health impacts.",
+        ),
     ]
 
     enemies = [
