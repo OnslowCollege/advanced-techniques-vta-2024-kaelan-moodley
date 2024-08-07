@@ -6,7 +6,8 @@ Date: 28/05/2024
 
 Enviromental Conservation Game.
 
-
+You are an eco warrior fighting the various problems that the enviroment 
+faces. You have potions and weapons to aid in your battle. 
 
 """
 
