@@ -422,11 +422,11 @@ def main():
 
     player = Player(player_name)
     enemies_data = [
-        ("Deforestation", 110, 12, 100 ),
-        ("Pollution", 120, 14, 35 ),
-        ("Climate Change", 130, 15, 40 ),
-        ("Overfishing", 140, 20, 45 ),
-        ("Plastic Pollution", 150, 25, 75 ),
+        ("Deforestation", 110, 12, 100),
+        ("Pollution", 120, 14, 35),
+        ("Climate Change", 130, 15, 40),
+        ("Overfishing", 140, 20, 45),
+        ("Plastic Pollution", 150, 25, 75),
     ]
 
     enemies = [
@@ -482,4 +482,3 @@ def main():
 if __name__ == "__main__":
 
     main()
-
