@@ -6,6 +6,8 @@ Date: 28/05/2024
 
 Enviromental Conservation Game.
 
+
+
 """
 
 # Enter your code here
