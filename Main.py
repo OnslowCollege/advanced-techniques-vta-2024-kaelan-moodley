@@ -183,7 +183,7 @@ class Player(Hero):
 class Enemy(Hero):
     """Represents an enemy in the game."""
 
-    def __init__(self, name: str, health: int, attack_power: int, reward: int):
+    def __init__(self, name: str, health: int, attack_power: int, reward: int, description:str):
         """
         Initialize an Enemy object.
 
