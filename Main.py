@@ -332,6 +332,7 @@ def battle(player: Player, enemy: Enemy) -> bool:
 
     """
     print(f"The terrible {enemy.name} appears!")
+    enemy.show_description()
     while player.is_alive() and enemy.is_alive():
         if player_turn(player, enemy):
             return True
