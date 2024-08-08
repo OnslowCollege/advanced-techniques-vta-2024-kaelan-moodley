@@ -465,8 +465,8 @@ def main():
     ]
 
     enemies = [
-        Enemy(name, health, attack_power, reward)
-        for name, health, attack_power, reward in enemies_data
+        Enemy(name, health, attack_power, reward, description)
+        for name, health, attack_power, reward, description in enemies_data
     ]
 
     print("Welcome, eco-warrior! Your mission is to protect the environment.")
