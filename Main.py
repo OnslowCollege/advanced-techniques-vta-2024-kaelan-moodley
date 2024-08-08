@@ -433,15 +433,34 @@ def main():
         " vegetation (Deforestation) can cause climate change, " +
         " desertification, soil erosion, fewer crops, flooding, increased " +
         " greenhouse gasses in the atmosphere, and a host of problems for " +
-        "Indigenous people."),
+        " Indigenous people."),
         ("Pollution", 120, 14, 35, "Public health concerns related to high " +
-        "air pollution exposures include cancer, cardiovascular disease, " +
-        "respiratory diseases, diabetes mellitus, obesity, and " +
-        "reproductive, neurological, and immune system disorders. " +
-        "Research on air pollution and health effects continually advances."),
-        ("Climate Change", 130, 15, 40),
-        ("Overfishing", 140, 20, 45),
-        ("Plastic Pollution", 150, 25, 75),
+        " air pollution exposures include cancer, cardiovascular disease, " +
+        " respiratory diseases, diabetes mellitus, obesity, and " +
+        " reproductive, neurological, and immune system disorders. " +
+        " Research on air pollution and health effects continually advances."),
+        ("Climate Change", 130, 15, 40, "Climate change impacts:/nRising " +
+        " Temperatures: Increased heat, more illnesses, wildfires, and " +
+        " rapid Arctic warming./nSevere Storms: Intense storms, extreme " +
+        " rainfall, and flooding./nIncreased Drought: Worsened water " +
+        " shortages, affecting food production./nWarming Oceans: Rising " +
+        " sea levels and ocean acidity, harming marine life./nSpecies " +
+        " Loss: Accelerated extinction, one million species at risk./nFood " +
+        " Insecurity: Harm to fisheries, crops, and livestock, leading to " +
+        " hunger./nHealth Risks: Pollution, disease, and malnutrition " +
+        " causing millions of deaths./nPoverty and Displacement: " +
+        " Increased poverty and displacement due to climate impacts."),
+        ("Overfishing", 140, 20, 45, "Overfishing and destructive fishing " +
+        " not only devastates fish populations and wildlife, breaks down " +
+        " the food web and degrades habitats. It undermines the ocean's " +
+        " ability to perform critical ecosystem services such as storing " +
+        " carbon that is needed for climate mitigation."),
+        ("Plastic Pollution", 150, 25, 75, "This pollution (plastic " +
+        " pollution)chokes marine wildlife, damages soil and poisons " +
+        " groundwater, and can cause serious health impacts. Is pollution " +
+        " the only problem with plastic? No, it also contributes to the " +
+        " climate crisis. The production of plastic is one of the most " +
+        " energy-intensive manufacturing processes in the world."),
     ]
 
     enemies = [
