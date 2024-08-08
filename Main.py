@@ -207,7 +207,7 @@ class Enemy(Hero):
 
     def show_description(self):
         """Displays the description of the enemies."""
-        print(f"{self.name}:")
+        print(f"{self.name}: {self.description}")
 
 
 def get_player_choice() -> str:
