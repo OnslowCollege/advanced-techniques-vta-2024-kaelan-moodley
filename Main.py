@@ -183,7 +183,7 @@ class Player(Hero):
 class Enemy(Hero):
     """Represents an enemy in the game."""
 
-    def __init__(self, name: str, health: int, attack_power: int, reward: int, description:str):
+    def __init__(self, name: str, health: int, attack_power: int, reward: int, description:str ):
         """
         Initialize an Enemy object.
 
@@ -197,10 +197,17 @@ class Enemy(Hero):
             The attack power of the enemy.
         reward: int
             The currency reward for defeating the enemy.
+        description: str
+            The description the enviromental issue the enemy represents.    
 
         """
         super().__init__(name, health, attack_power)
         self.reward = reward
+        self.description = description
+
+    def show_description(self):
+        """Displays the description of the enemies."""
+        print(f"{self.name}:")
 
 
 def get_player_choice() -> str:
