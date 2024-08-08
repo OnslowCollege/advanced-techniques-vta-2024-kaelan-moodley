@@ -434,7 +434,11 @@ def main():
         " desertification, soil erosion, fewer crops, flooding, increased " +
         " greenhouse gasses in the atmosphere, and a host of problems for " +
         "Indigenous people."),
-        ("Pollution", 120, 14, 35),
+        ("Pollution", 120, 14, 35, "Public health concerns related to high " +
+        "air pollution exposures include cancer, cardiovascular disease, " +
+        "respiratory diseases, diabetes mellitus, obesity, and " +
+        "reproductive, neurological, and immune system disorders. " +
+        "Research on air pollution and health effects continually advances."),
         ("Climate Change", 130, 15, 40),
         ("Overfishing", 140, 20, 45),
         ("Plastic Pollution", 150, 25, 75),
