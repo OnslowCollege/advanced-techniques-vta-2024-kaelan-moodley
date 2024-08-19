@@ -33,7 +33,7 @@ class Hero:
             The attack power of the hero.
 
         """
-        self.name = name
+        self.name = name # Name of the hero
         self.health = health
         self.attack_power = attack_power
 
