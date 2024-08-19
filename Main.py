@@ -33,9 +33,9 @@ class Hero:
             The attack power of the hero.
 
         """
-        self.name = name # Name of the hero
-        self.health = health
-        self.attack_power = attack_power
+        self.name = name  # Name of the hero
+        self.health = health  # Health points of the hero
+        self.attack_power = attack_power  # Attack power of the hero
 
     def attack(self) -> int:
         """
@@ -47,7 +47,8 @@ class Hero:
             The damage dealt by the hero's attack.
 
         """
-        return random.randint(self.attack_power // 2, self.attack_power)
+        return random.randint(self.attack_power // 2, self.attack_power)  
+    # Random damage within attack power range
 
     def is_alive(self) -> bool:
         """
@@ -59,7 +60,7 @@ class Hero:
             True if the hero is alive, otherwise False.
 
         """
-        return self.health > 0
+        return self.health > 0  # Hero is alive if health is greater than 0
 
 
 class Player(Hero):
@@ -75,19 +76,21 @@ class Player(Hero):
             The name of the player.
 
         """
-        super().__init__(name, health=100, attack_power=20)
-        self.dollars = 0
+        super().__init__(name, health=100, attack_power=20)  
+        # Initialize with default health and attack power
+        self.dollars = 0  # Player's money
         self.inventory = {
-            "health potion": 2,
-            "damage potion": 1,
-            "sword": 0,
-            "excaliber": 0,
+            "health potion": 2,  # Number of health potions
+            "damage potion": 1,  # Number of damage potions
+            "sword": 0,  # Number of swords
+            "excaliber": 0,  # Number of excalibers
         }
-        self.stats = {"battles_won": 0, "battles_lost": 0}
+        self.stats = {"battles_won": 0, "battles_lost": 0} 
+        # Track battles won and lost
 
     def defend(self):
         """Simulate a player's defend action, which increases their health."""
-        self.health = min(100, self.health + 8)
+        self.health = min(100, self.health + 8)  # Regain up to 100 HP
         print(f"{self.name} defends and regains 8 HP.")
 
     def use_potion(self, potion_type: str, enemy: "Enemy"):
@@ -102,14 +105,15 @@ class Player(Hero):
             The enemy to affect if using a damage potion.
 
         """
-        if self.inventory.get(potion_type, 0) > 0:
+        if self.inventory.get(potion_type, 0) > 0:  
+            # Check if potion is available
             self.inventory[potion_type] -= 1
             if potion_type == "health potion":
-                self.health = min(100, self.health + 15)
+                self.health = min(100, self.health + 15)  # Regain up to 100 HP
                 print(f"{self.name} uses a health potion and regains 15 HP.")
             elif potion_type == "damage potion":
                 damage = 25
-                enemy.health -= damage
+                enemy.health -= damage  # Inflict damage on the enemy
                 print(
                     f"{self.name} uses a damage potion and deals" +
                     f" {damage} damage to {enemy.name}!"
@@ -127,7 +131,7 @@ class Player(Hero):
             The amount of money to add.
 
         """
-        self.dollars += amount
+        self.dollars += amount  # Increase the player's money
         print(
             f"{self.name} earned {amount} dollars. " +
             f"Total dollars: {self.dollars}"
@@ -145,15 +149,15 @@ class Player(Hero):
             The cost of the item.
 
         """
-        if self.dollars >= cost:
+        if self.dollars >= cost:  # Check if the player has enough money
             self.dollars -= cost
             if item in self.inventory:
-                self.inventory[item] += 1
+                self.inventory[item] += 1  # Add item to inventory
             else:
                 self.inventory[item] = 1
 
             if item == "excaliber":
-                self.attack_power += 10
+                self.attack_power += 10  # Increase attack power
                 print(
                     f"{self.name} bought a {item}. " +
                     "Attack power increased by 10. " +
@@ -183,7 +187,8 @@ class Player(Hero):
 class Enemy(Hero):
     """Represents an enemy in the game."""
 
-    def __init__(self, name: str, health: int, attack_power: int, reward: int, description:str ):
+    def __init__(self, name: str, health: int, attack_power: int, reward: int,
+                description: str):
         """
         Initialize an Enemy object.
 
@@ -198,15 +203,16 @@ class Enemy(Hero):
         reward: int
             The currency reward for defeating the enemy.
         description: str
-            The description the enviromental issue the enemy represents.    
+            The description of the environmental issue the enemy represents. 
 
         """
-        super().__init__(name, health, attack_power)
-        self.reward = reward
-        self.description = description
+        super().__init__(name, health, attack_power)  
+        # Initialize with given parameters
+        self.reward = reward  # Reward for defeating the enemy
+        self.description = description  # Description of the enemy
 
     def show_description(self):
-        """Displays the description of the enemies."""
+        """Displays the description of the enemy."""  # noqa: D401
         print(f"{self.name}: {self.description}")
 
 
@@ -254,7 +260,7 @@ def player_turn(player: Player, enemy: Enemy) -> bool:
     player_choice = get_player_choice()
     if player_choice == "1":
         player_damage = player.attack()
-        enemy.health -= player_damage
+        enemy.health -= player_damage  # Apply damage to the enemy
         print(
             f"{player.name} attacks {enemy.name}" +
             f" and deals {player_damage} damage!"
@@ -264,23 +270,23 @@ def player_turn(player: Player, enemy: Enemy) -> bool:
                 f"{player.name} defeated {enemy.name} " +
                 f"and earned {enemy.reward} dollars!"
             )
-            player.add_dollars(enemy.reward)
-            player.stats["battles_won"] += 1
+            player.add_dollars(enemy.reward)  # Add reward to player's dollars
+            player.stats["battles_won"] += 1  # Increment battles won
             return True
     elif player_choice == "2":
-        player.defend()
+        player.defend()  # Player defends and regains health
     elif player_choice == "3":
-        player.use_potion("health potion", enemy)
+        player.use_potion("health potion", enemy)  # Use health potion
         return True  # Skip enemy's turn
     elif player_choice == "4":
-        player.use_potion("damage potion", enemy)
+        player.use_potion("damage potion", enemy)  # Use damage potion
         if enemy.health <= 0:
             print(
                 f"{player.name} defeated {enemy.name} " +
                 f"and earned {enemy.reward} dollars!"
             )
-            player.add_dollars(enemy.reward)
-            player.stats["battles_won"] += 1
+            player.add_dollars(enemy.reward)  # Add reward to player's dollars
+            player.stats["battles_won"] += 1  # Increment battles won
             return True
     return False
 
@@ -303,13 +309,13 @@ def enemy_turn(player: Player, enemy: Enemy) -> bool:
 
     """
     enemy_damage = enemy.attack()
-    player.health -= enemy_damage
+    player.health -= enemy_damage  # Apply damage to the player
     print(
         f"{enemy.name} attacks {player.name} and deals {enemy_damage} damage!"
     )
     if player.health <= 0:
         print(f"{player.name} was defeated by {enemy.name}. Game over!")
-        player.stats["battles_lost"] += 1
+        player.stats["battles_lost"] += 1  # Increment battles lost
         return True
     return False
 
@@ -332,7 +338,7 @@ def battle(player: Player, enemy: Enemy) -> bool:
 
     """
     print(f"The terrible {enemy.name} appears!")
-    enemy.show_description()
+    enemy.show_description()  # Show the enemy's description
     while player.is_alive() and enemy.is_alive():
         if player_turn(player, enemy):
             return True
@@ -340,7 +346,7 @@ def battle(player: Player, enemy: Enemy) -> bool:
             continue  # Skip the enemy's turn if the player used a potion
         if enemy_turn(player, enemy):
             return False
-    return player.is_alive()
+    return player.is_alive()  # Player wins if still alive
 
 
 def shop_categorized(player: Player):
@@ -426,7 +432,7 @@ def main():
         if player_name.isalpha():
             break
         print("Invalid name. Please enter a name with only " +
-              " alphabetic characters.")
+            " alphabetic characters.")
 
     player = Player(player_name)
     enemies_data = [
@@ -496,7 +502,7 @@ def main():
                     if not battle(player, enemies[enemy_choice]):
                         print("Game over!")
                         break
-                    enemies.pop(enemy_choice)
+                    enemies.pop(enemy_choice)  # Remove defeated enemy
                 else:
                     print("Invalid choice. Please choose a valid enemy.")
 
@@ -504,9 +510,9 @@ def main():
                 print("Invalid choice, please enter a valid choice.")
 
         elif choice == "2":
-            shop_categorized(player)
+            shop_categorized(player)  # Show shop menu
         elif choice == "3":
-            player.show_stats()
+            player.show_stats()  # Show player stats
         elif choice == "4":
             print("Thank you for playing! Goodbye.")
             break
@@ -516,4 +522,4 @@ def main():
 
 if __name__ == "__main__":
 
-    main()
+    main()  # Start the game
