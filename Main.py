@@ -194,13 +194,14 @@ class Enemy(Hero):
             The currency reward for defeating the enemy.
         description: str
             The description of the environmental issue the enemy represents.
+            
         """
         super().__init__(name, health, attack_power)
         self.reward = reward
         self.description = description
 
     def show_description(self):
-        """Displays the description of the enemy."""
+        """Displays the description of the enemy."""  
         # Format the description with proper line breaks for readability
         formatted_description = self.description.replace(
             "/n", "\n"
@@ -216,6 +217,7 @@ def get_player_choice() -> str:
     -------
     str
         The player's chosen action.
+        
     """
     while True:
         # Prompt the player to choose an action
@@ -243,6 +245,7 @@ def player_turn(player: Player, enemy: Enemy) -> bool:
     -------
     bool
         True if the enemy is defeated, False otherwise.
+
     """
     # Display the current health of both the player and the enemy
     print(
@@ -309,6 +312,7 @@ def enemy_turn(player: Player, enemy: Enemy) -> bool:
     -------
     bool
         True if the player is defeated, False otherwise.
+
     """
     # Enemy attacks the player
     enemy_damage = enemy.attack()
@@ -339,6 +343,7 @@ def battle(player: Player, enemy: Enemy) -> bool:
     -------
     bool
         True if the player wins, False otherwise.
+
     """
     print(f"\nA wild {enemy.name} has appeared!")
     enemy.show_description()
