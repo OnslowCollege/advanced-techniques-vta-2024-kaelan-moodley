@@ -31,6 +31,7 @@ class Hero:
             The health points of the hero.
         attack_power: int
             The attack power of the hero.
+            
         """
         self.name = name
         self.health = health
@@ -44,6 +45,7 @@ class Hero:
         -------
         int
             The damage dealt by the hero's attack.
+
         """
         return random.randint(self.attack_power // 2, self.attack_power)
 
@@ -55,6 +57,7 @@ class Hero:
         -------
         bool
             True if the hero is alive, otherwise False.
+
         """
         return self.health > 0
 
@@ -70,6 +73,7 @@ class Player(Hero):
         ----------
         name: str
             The name of the player.
+
         """
         super().__init__(name, health=100, attack_power=20)
         self.dollars = 0
@@ -96,6 +100,7 @@ class Player(Hero):
             The type of potion to use.
         enemy: Enemy
             The enemy to affect if using a damage potion.
+
         """
         if self.inventory.get(potion_type, 0) > 0:
             self.inventory[potion_type] -= 1
@@ -120,6 +125,7 @@ class Player(Hero):
         ----------
         amount: int
             The amount of money to add.
+
         """
         self.dollars += amount
         print(
@@ -137,6 +143,7 @@ class Player(Hero):
             The item to buy.
         cost: int
             The cost of the item.
+
         """
         if self.dollars >= cost:
             self.dollars -= cost
@@ -177,7 +184,8 @@ class Enemy(Hero):
     """Represents an enemy in the game."""
 
     def __init__(
-        self, name: str, health: int, attack_power: int, reward: int, description: str
+        self, name: str, health: int, attack_power: int, reward: int, 
+        description: str
     ):
         """
         Initialize an Enemy object.
