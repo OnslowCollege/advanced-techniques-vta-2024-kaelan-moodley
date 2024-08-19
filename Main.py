@@ -340,7 +340,6 @@ def battle(player: Player, enemy: Enemy) -> bool:
     bool
         True if the player wins, False otherwise.
     """
-    
     print(f"\nA wild {enemy.name} has appeared!")
     enemy.show_description()
 
