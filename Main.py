@@ -31,7 +31,7 @@ class Hero:
             The health points of the hero.
         attack_power: int
             The attack power of the hero.
-            
+
         """
         self.name = name
         self.health = health
@@ -111,7 +111,7 @@ class Player(Hero):
                 damage = 25
                 enemy.health -= damage
                 print(
-                    f"{self.name} uses a damage potion and deals"
+                    f"{self.name} uses a damage potion and deals" +
                     f" {damage} damage to {enemy.name}!"
                 )
         else:
@@ -129,7 +129,7 @@ class Player(Hero):
         """
         self.dollars += amount
         print(
-            f"{self.name} earned {amount} dollars. "
+            f"{self.name} earned {amount} dollars. " +
             f"Total dollars: {self.dollars}"
         )
 
@@ -155,13 +155,13 @@ class Player(Hero):
             if item == "excaliber":
                 self.attack_power += 10
                 print(
-                    f"{self.name} bought a {item}. "
-                    "Attack power increased by 10. "
+                    f"{self.name} bought a {item}. " +
+                    "Attack power increased by 10. " +
                     f"Remaining dollars: {self.dollars}"
                 )
             else:
                 print(
-                    f"{self.name} bought a {item}."
+                    f"{self.name} bought a {item}." +
                     f" Remaining dollars: {self.dollars}"
                 )
         else:
@@ -183,10 +183,7 @@ class Player(Hero):
 class Enemy(Hero):
     """Represents an enemy in the game."""
 
-    def __init__(
-        self, name: str, health: int, attack_power: int, reward: int, 
-        description: str
-    ):
+    def __init__(self, name: str, health: int, attack_power: int, reward: int, description:str ):
         """
         Initialize an Enemy object.
 
@@ -201,20 +198,16 @@ class Enemy(Hero):
         reward: int
             The currency reward for defeating the enemy.
         description: str
-            The description of the environmental issue the enemy represents.
-            
+            The description the enviromental issue the enemy represents.    
+
         """
         super().__init__(name, health, attack_power)
         self.reward = reward
         self.description = description
 
     def show_description(self):
-        """Displays the description of the enemy."""  
-        # Format the description with proper line breaks for readability
-        formatted_description = self.description.replace(
-            "/n", "\n"
-        ).replace("  ", "")
-        print(f"\n{self.name}: {formatted_description}\n")
+        """Displays the description of the enemies."""
+        print(f"{self.name}: {self.description}")
 
 
 def get_player_choice() -> str:
@@ -225,13 +218,12 @@ def get_player_choice() -> str:
     -------
     str
         The player's chosen action.
-        
+
     """
     while True:
-        # Prompt the player to choose an action
         player_choice = input(
-            "Choose your action (1. Attack, 2. Defend, 3. Use Health Potion,"
-            + " 4. Use Damage Potion): "
+            "Choose your action (1. Attack, 2. Defend, 3. Use Health Potion," +
+            " 4. Use Damage Potion): "
         ).strip()
         if player_choice in ["1", "2", "3", "4"]:
             return player_choice
@@ -255,48 +247,36 @@ def player_turn(player: Player, enemy: Enemy) -> bool:
         True if the enemy is defeated, False otherwise.
 
     """
-    # Display the current health of both the player and the enemy
     print(
-        f"{player.name}'s HP: {player.health} | "
+        f"{player.name}'s HP: {player.health} | " +
         f"{enemy.name}'s HP: {enemy.health}"
     )
-    # Get the player's action choice
     player_choice = get_player_choice()
-
     if player_choice == "1":
-        # Player chooses to attack
         player_damage = player.attack()
         enemy.health -= player_damage
         print(
-            f"{player.name} attacks {enemy.name}"
+            f"{player.name} attacks {enemy.name}" +
             f" and deals {player_damage} damage!"
         )
         if enemy.health <= 0:
-            # Enemy is defeated
             print(
-                f"{player.name} defeated {enemy.name} "
+                f"{player.name} defeated {enemy.name} " +
                 f"and earned {enemy.reward} dollars!"
             )
             player.add_dollars(enemy.reward)
             player.stats["battles_won"] += 1
             return True
-
     elif player_choice == "2":
-        # Player chooses to defend
         player.defend()
-
     elif player_choice == "3":
-        # Player chooses to use a health potion
         player.use_potion("health potion", enemy)
         return True  # Skip enemy's turn
-
     elif player_choice == "4":
-        # Player chooses to use a damage potion
         player.use_potion("damage potion", enemy)
         if enemy.health <= 0:
-            # Enemy is defeated
             print(
-                f"{player.name} defeated {enemy.name} "
+                f"{player.name} defeated {enemy.name} " +
                 f"and earned {enemy.reward} dollars!"
             )
             player.add_dollars(enemy.reward)
@@ -322,14 +302,12 @@ def enemy_turn(player: Player, enemy: Enemy) -> bool:
         True if the player is defeated, False otherwise.
 
     """
-    # Enemy attacks the player
     enemy_damage = enemy.attack()
     player.health -= enemy_damage
     print(
         f"{enemy.name} attacks {player.name} and deals {enemy_damage} damage!"
     )
     if player.health <= 0:
-        # Player is defeated
         print(f"{player.name} was defeated by {enemy.name}. Game over!")
         player.stats["battles_lost"] += 1
         return True
@@ -353,77 +331,189 @@ def battle(player: Player, enemy: Enemy) -> bool:
         True if the player wins, False otherwise.
 
     """
-    print(f"\nA wild {enemy.name} has appeared!")
+    print(f"The terrible {enemy.name} appears!")
     enemy.show_description()
-
-    while True:
+    while player.is_alive() and enemy.is_alive():
         if player_turn(player, enemy):
             return True
+        if player_turn(player, enemy):
+            continue  # Skip the enemy's turn if the player used a potion
         if enemy_turn(player, enemy):
             return False
+    return player.is_alive()
+
+
+def shop_categorized(player: Player):
+    """
+    Display the shop menu with categorized items. Allows player to purchase.
+
+    Parameters
+    ----------
+    player: Player
+        The player object.
+
+    """
+    print("Welcome to the shop! Here are the items you can buy:")
+    items = {
+        "Potions": [
+            {
+                "name": "health potion",
+                "cost": 20,
+                "description": "Regains 15 HP",
+            },
+            {
+                "name": "damage potion",
+                "cost": 30,
+                "description": "Deals 20 damage to the enemy",
+            },
+        ],
+        "Weapons": [
+            {
+                "name": "sword",
+                "cost": 50,
+                "description": "Increases attack power by 5",
+            },
+            {
+                "name": "excaliber",
+                "cost": 100,
+                "description": "Increases attack power by 10",
+            },
+        ],
+    }
+
+    for category, category_items in items.items():
+        print(f"\n{category}:")
+        for idx, item in enumerate(category_items, start=1):
+            print(
+                f"  {idx}. {item['name'].capitalize()}:" +
+                f" {item['cost']} dollars - {item['description']}"
+            )
+
+    while True:
+        category_choice = (
+            input(
+                "\nEnter the category (Potions/Weapons) you want to buy from "
+                + "or type 'exit' to leave: "
+            )
+            .strip()
+            .capitalize()
+        )
+        if category_choice in items:
+            item_choice = input(
+                "Enter the number of the item you want to buy from " +
+                f" {category_choice} or type 'back' to choose another" +
+                " category: "
+            ).strip()
+            if item_choice.isdigit() and 1 <= int(item_choice) <= len(
+                items[category_choice]
+            ):
+                selected_item = items[category_choice][int(item_choice) - 1]
+                player.buy_item(selected_item["name"], selected_item["cost"])
+            elif item_choice.lower() == "back":
+                continue
+            else:
+                print("Invalid choice. Please try again.")
+        elif category_choice == "Exit":
+            break
+        else:
+            print("Invalid category. Please try again.")
 
 
 def main():
-    """Run the main game loop."""
-    player_name = input("Enter your hero's name: ")
-    player = Player(player_name)
+    """Run the game."""
+    while True:
+        player_name = input("Enter your name: ").strip()
+        if player_name.isalpha():
+            break
+        print("Invalid name. Please enter a name with only " +
+              " alphabetic characters.")
 
-    # Define a list of enemies with environmental issues as descriptions
-    enemies = [
-        Enemy(
-            "Pollution",
-            50,
-            10,
-            10,
-            "Pollution is contaminating the air, water, and land. It's"
-            " a significant threat to ecosystems, wildlife, and human"
-            " health. We must reduce waste, recycle, and limit emissions"
-            " to fight pollution effectively.",
-        ),
-        Enemy(
-            "Deforestation",
-            60,
-            12,
-            12,
-            "Deforestation is the clearing of forests on a massive scale,"
-            " often resulting in damage to the quality of the land. It"
-            " leads to habitat loss, decreased biodiversity, and"
-            " contributes to climate change. Reforestation and"
-            " sustainable land management are critical solutions.",
-        ),
-        Enemy(
-            "Climate Change",
-            80,
-            15,
-            15,
-            "Climate change is causing more frequent and severe weather"
-            " events, rising sea levels, and disruptions to natural"
-            " ecosystems. It's driven by human activities, such as"
-            " burning fossil fuels and deforestation. Urgent action"
-            " is needed to reduce greenhouse gas emissions and"
-            " transition to renewable energy sources.",
-        ),
-        Enemy(
-            "Overfishing",
-            50,
-            10,
-            10,
-            "Overfishing is depleting fish populations at a rate faster"
-            " than they can reproduce. This threatens marine ecosystems"
-            " and food security. Sustainable fishing practices and"
-            " marine conservation are essential to restore fish stocks.",
-        ),
+    player = Player(player_name)
+    enemies_data = [
+        ("Deforestation", 110, 12, 100, "The loss of trees and other " +
+        " vegetation (Deforestation) can cause climate change, " +
+        " desertification, soil erosion, fewer crops, flooding, increased " +
+        " greenhouse gasses in the atmosphere, and a host of problems for " +
+        " Indigenous people."),
+        ("Pollution", 120, 14, 35, "Public health concerns related to high " +
+        " air pollution exposures include cancer, cardiovascular disease, " +
+        " respiratory diseases, diabetes mellitus, obesity, and " +
+        " reproductive, neurological, and immune system disorders. " +
+        " Research on air pollution and health effects continually advances."),
+        ("Climate Change", 130, 15, 40, "Climate change impacts:/nRising " +
+        " Temperatures: Increased heat, more illnesses, wildfires, and " +
+        " rapid Arctic warming./nSevere Storms: Intense storms, extreme " +
+        " rainfall, and flooding./nIncreased Drought: Worsened water " +
+        " shortages, affecting food production./nWarming Oceans: Rising " +
+        " sea levels and ocean acidity, harming marine life./nSpecies " +
+        " Loss: Accelerated extinction, one million species at risk./nFood " +
+        " Insecurity: Harm to fisheries, crops, and livestock, leading to " +
+        " hunger./nHealth Risks: Pollution, disease, and malnutrition " +
+        " causing millions of deaths./nPoverty and Displacement: " +
+        " Increased poverty and displacement due to climate impacts."),
+        ("Overfishing", 140, 20, 45, "Overfishing and destructive fishing " +
+        " not only devastates fish populations and wildlife, breaks down " +
+        " the food web and degrades habitats. It undermines the ocean's " +
+        " ability to perform critical ecosystem services such as storing " +
+        " carbon that is needed for climate mitigation."),
+        ("Plastic Pollution", 150, 25, 75, "This pollution (plastic " +
+        " pollution)chokes marine wildlife, damages soil and poisons " +
+        " groundwater, and can cause serious health impacts. Is pollution " +
+        " the only problem with plastic? No, it also contributes to the " +
+        " climate crisis. The production of plastic is one of the most " +
+        " energy-intensive manufacturing processes in the world."),
     ]
 
-    # Run battles for each enemy
-    for enemy in enemies:
-        battle(player, enemy)
-        if player.health <= 0:
+    enemies = [
+        Enemy(name, health, attack_power, reward, description)
+        for name, health, attack_power, reward, description in enemies_data
+    ]
+
+    print("Welcome, eco-warrior! Your mission is to protect the environment.")
+    print("You will face various adversaries harming the planet. Let's begin!")
+
+    while player.is_alive():
+        print("\nMenu:")
+        print("1. Fight an enemy")
+        print("2. Visit the shop")
+        print("3. View stats")
+        print("4. Exit game")
+
+        choice = input("Choose an option: ").strip()
+
+        if choice == "1":
+            for i, enemy in enumerate(enemies, start=1):
+                print(
+                    f"{i}. {enemy.name} (HP: {enemy.health}, " +
+                    f"Attack: {enemy.attack_power}, Reward: " +
+                    f" {enemy.reward} dollars)"
+                )
+
+            enemy_choice = input("Choose an enemy to fight: ").strip()
+            try:
+                enemy_choice = int(enemy_choice) - 1
+                if 0 <= enemy_choice < len(enemies):
+                    if not battle(player, enemies[enemy_choice]):
+                        print("Game over!")
+                        break
+                    enemies.pop(enemy_choice)
+                else:
+                    print("Invalid choice. Please choose a valid enemy.")
+
+            except ValueError:
+                print("Invalid choice, please enter a valid choice.")
+
+        elif choice == "2":
+            shop_categorized(player)
+        elif choice == "3":
+            player.show_stats()
+        elif choice == "4":
+            print("Thank you for playing! Goodbye.")
             break
+        else:
+            print("Invalid choice. Please select a valid option.")
 
-    print("\nGame over! Here are your final stats:")
-    player.show_stats()
 
+if __name__ == "__main__":
 
-# Run the game
-main()
+    main()
